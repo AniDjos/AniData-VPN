@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Virtual environment
+.virtualenv/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+.ropeproject/
+.DS_Store
+
+# VPN specific
+*.key
+*.crt
+*.pem
+*.ovpn
+*.conf
+*.log
+*.pid
+
+# Generated files
+expanded_config.json
+servers/keys/
+servers/certs/
+dist/
+build/
+
+# User config files
+.anidata/
+.config/
+*.cache
+
+# Packaging
+*.deb
+*.rpm
+*.AppImage
+*.exe
+*.msi
+*.dmg
+
+# Misc
+*.bak
+*.tmp
+*.temp
+*.ipynb_checkpoints

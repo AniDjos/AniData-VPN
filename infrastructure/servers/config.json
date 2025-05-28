@@ -1,0 +1,267 @@
+{
+  "servers": [
+    {
+      "id": "eu-01",
+      "region": "Europe",
+      "country": "France",
+      "city": "Paris",
+      "ip": "178.32.53.94",
+      "protocols": ["wireguard", "openvpn", "ikev2"],
+      "bandwidth": 10000,
+      "status": "active",
+      "coordinates": {
+        "latitude": 48.8566,
+        "longitude": 2.3522
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/eu-01.crt",
+      "private_key": "keys/eu-01.key"
+    },
+    {
+      "id": "us-01",
+      "region": "North America",
+      "country": "United States",
+      "city": "New York",
+      "ip": "104.156.231.229",
+      "protocols": ["wireguard", "openvpn", "ikev2", "stealth"],
+      "bandwidth": 10000,
+      "status": "active",
+      "coordinates": {
+        "latitude": 40.7128,
+        "longitude": -74.0060
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/us-01.crt",
+      "private_key": "keys/us-01.key"
+    },
+    {
+      "id": "jp-01",
+      "region": "Asia",
+      "country": "Japan",
+      "city": "Tokyo",
+      "ip": "103.122.102.76",
+      "protocols": ["wireguard", "openvpn"],
+      "bandwidth": 5000,
+      "status": "active",
+      "coordinates": {
+        "latitude": 35.6762,
+        "longitude": 139.6503
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/jp-01.crt",
+      "private_key": "keys/jp-01.key"
+    },
+    {
+      "id": "sg-01",
+      "region": "Asia",
+      "country": "Singapore",
+      "city": "Singapore",
+      "ip": "139.59.96.125",
+      "protocols": ["wireguard", "openvpn", "ikev2"],
+      "bandwidth": 8000,
+      "status": "active",
+      "coordinates": {
+        "latitude": 1.3521,
+        "longitude": 103.8198
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/sg-01.crt",
+      "private_key": "keys/sg-01.key"
+    },
+    {
+      "id": "au-01",
+      "region": "Oceania",
+      "country": "Australia",
+      "city": "Sydney",
+      "ip": "45.63.25.87",
+      "protocols": ["wireguard", "openvpn"],
+      "bandwidth": 5000,
+      "status": "active",
+      "coordinates": {
+        "latitude": -33.8688,
+        "longitude": 151.2093
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/au-01.crt",
+      "private_key": "keys/au-01.key"
+    },
+    {
+      "id": "br-01",
+      "region": "South America",
+      "country": "Brazil",
+      "city": "Sao Paulo",
+      "ip": "191.232.173.42",
+      "protocols": ["wireguard", "openvpn"],
+      "bandwidth": 3000,
+      "status": "active",
+      "coordinates": {
+        "latitude": -23.5505,
+        "longitude": -46.6333
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/br-01.crt",
+      "private_key": "keys/br-01.key"
+    },
+    {
+      "id": "za-01",
+      "region": "Africa",
+      "country": "South Africa",
+      "city": "Johannesburg",
+      "ip": "129.232.156.84",
+      "protocols": ["wireguard", "openvpn"],
+      "bandwidth": 2000,
+      "status": "active",
+      "coordinates": {
+        "latitude": -26.2041,
+        "longitude": 28.0473
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/za-01.crt",
+      "private_key": "keys/za-01.key"
+    },
+    {
+      "id": "de-01",
+      "region": "Europe",
+      "country": "Germany",
+      "city": "Frankfurt",
+      "ip": "138.201.92.147",
+      "protocols": ["wireguard", "openvpn", "ikev2", "stealth"],
+      "bandwidth": 10000,
+      "status": "active",
+      "coordinates": {
+        "latitude": 50.1109,
+        "longitude": 8.6821
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/de-01.crt",
+      "private_key": "keys/de-01.key"
+    },
+    {
+      "id": "uk-01",
+      "region": "Europe",
+      "country": "United Kingdom",
+      "city": "London",
+      "ip": "139.162.184.63",
+      "protocols": ["wireguard", "openvpn", "ikev2"],
+      "bandwidth": 8000,
+      "status": "active",
+      "coordinates": {
+        "latitude": 51.5074,
+        "longitude": -0.1278
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/uk-01.crt",
+      "private_key": "keys/uk-01.key"
+    },
+    {
+      "id": "ca-01",
+      "region": "North America",
+      "country": "Canada",
+      "city": "Toronto",
+      "ip": "172.105.67.201",
+      "protocols": ["wireguard", "openvpn", "ikev2"],
+      "bandwidth": 7000,
+      "status": "active",
+      "coordinates": {
+        "latitude": 43.6532,
+        "longitude": -79.3832
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/ca-01.crt",
+      "private_key": "keys/ca-01.key"
+    }
+  ],
+  "multi_hop_routes": [
+    {
+      "id": "secure-route-1",
+      "name": "Secure Europe Route",
+      "hops": ["fr-01", "de-01", "uk-01"],
+      "latency": 120,
+      "bandwidth": 5000,
+      "security_level": "maximum"
+    },
+    {
+      "id": "secure-route-2",
+      "name": "Global Secure Route",
+      "hops": ["us-01", "ca-01", "de-01"],
+      "latency": 180,
+      "bandwidth": 3000,
+      "security_level": "maximum"
+    },
+    {
+      "id": "asia-route",
+      "name": "Asia Optimized",
+      "hops": ["sg-01", "jp-01"],
+      "latency": 100,
+      "bandwidth": 4000,
+      "security_level": "high"
+    }
+  ],
+  "settings": {
+    "rotation_interval": 3600,
+    "auto_connect": true,
+    "default_protocol": "wireguard",
+    "dns": {
+      "primary": "1.1.1.1",
+      "secondary": "9.9.9.9",
+      "use_doh": true,
+      "doh_server": "https://cloudflare-dns.com/dns-query"
+    },
+    "leak_protection": {
+      "kill_switch": true,
+      "dns_leak_protection": true,
+      "webrtc_leak_protection": true,
+      "ipv6_leak_protection": true
+    }
+  }
+}
