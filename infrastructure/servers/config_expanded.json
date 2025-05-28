@@ -1,0 +1,4303 @@
+{
+  "servers": [
+    {
+      "id": "eu-01",
+      "region": "Europe",
+      "country": "France",
+      "city": "Paris",
+      "ip": "178.32.53.94",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 10000,
+      "status": "active",
+      "coordinates": {
+        "latitude": 48.8566,
+        "longitude": 2.3522
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/eu-01.crt",
+      "private_key": "keys/eu-01.key"
+    },
+    {
+      "id": "us-01",
+      "region": "North America",
+      "country": "United States",
+      "city": "New York",
+      "ip": "104.156.231.229",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 10000,
+      "status": "active",
+      "coordinates": {
+        "latitude": 40.7128,
+        "longitude": -74.006
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/us-01.crt",
+      "private_key": "keys/us-01.key"
+    },
+    {
+      "id": "jp-01",
+      "region": "Asia",
+      "country": "Japan",
+      "city": "Tokyo",
+      "ip": "103.122.102.76",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 5000,
+      "status": "active",
+      "coordinates": {
+        "latitude": 35.6762,
+        "longitude": 139.6503
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/jp-01.crt",
+      "private_key": "keys/jp-01.key"
+    },
+    {
+      "id": "sg-01",
+      "region": "Asia",
+      "country": "Singapore",
+      "city": "Singapore",
+      "ip": "139.59.96.125",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 8000,
+      "status": "active",
+      "coordinates": {
+        "latitude": 1.3521,
+        "longitude": 103.8198
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/sg-01.crt",
+      "private_key": "keys/sg-01.key"
+    },
+    {
+      "id": "au-01",
+      "region": "Oceania",
+      "country": "Australia",
+      "city": "Sydney",
+      "ip": "45.63.25.87",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 5000,
+      "status": "active",
+      "coordinates": {
+        "latitude": -33.8688,
+        "longitude": 151.2093
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/au-01.crt",
+      "private_key": "keys/au-01.key"
+    },
+    {
+      "id": "br-01",
+      "region": "South America",
+      "country": "Brazil",
+      "city": "Sao Paulo",
+      "ip": "191.232.173.42",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 3000,
+      "status": "active",
+      "coordinates": {
+        "latitude": -23.5505,
+        "longitude": -46.6333
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/br-01.crt",
+      "private_key": "keys/br-01.key"
+    },
+    {
+      "id": "za-01",
+      "region": "Africa",
+      "country": "South Africa",
+      "city": "Johannesburg",
+      "ip": "129.232.156.84",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 2000,
+      "status": "active",
+      "coordinates": {
+        "latitude": -26.2041,
+        "longitude": 28.0473
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/za-01.crt",
+      "private_key": "keys/za-01.key"
+    },
+    {
+      "id": "de-01",
+      "region": "Europe",
+      "country": "Germany",
+      "city": "Frankfurt",
+      "ip": "138.201.92.147",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 10000,
+      "status": "active",
+      "coordinates": {
+        "latitude": 50.1109,
+        "longitude": 8.6821
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/de-01.crt",
+      "private_key": "keys/de-01.key"
+    },
+    {
+      "id": "uk-01",
+      "region": "Europe",
+      "country": "United Kingdom",
+      "city": "London",
+      "ip": "139.162.184.63",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 8000,
+      "status": "active",
+      "coordinates": {
+        "latitude": 51.5074,
+        "longitude": -0.1278
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/uk-01.crt",
+      "private_key": "keys/uk-01.key"
+    },
+    {
+      "id": "ca-01",
+      "region": "North America",
+      "country": "Canada",
+      "city": "Toronto",
+      "ip": "172.105.67.201",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 7000,
+      "status": "active",
+      "coordinates": {
+        "latitude": 43.6532,
+        "longitude": -79.3832
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/ca-01.crt",
+      "private_key": "keys/ca-01.key"
+    },
+    {
+      "id": "al-51",
+      "region": "Europe",
+      "country": "Albania",
+      "city": "Tirana",
+      "ip": "186.213.236.238",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 9160,
+      "status": "active",
+      "coordinates": {
+        "latitude": 41.3275,
+        "longitude": 19.8187
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/al-51.crt",
+      "private_key": "keys/al-51.key"
+    },
+    {
+      "id": "ad-98",
+      "region": "Europe",
+      "country": "Andorra",
+      "city": "Andorra la Vella",
+      "ip": "143.220.81.250",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 7547,
+      "status": "active",
+      "coordinates": {
+        "latitude": 42.5063,
+        "longitude": 1.5218
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/ad-98.crt",
+      "private_key": "keys/ad-98.key"
+    },
+    {
+      "id": "am-73",
+      "region": "Europe",
+      "country": "Armenia",
+      "city": "Yerevan",
+      "ip": "72.195.145.70",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 5931,
+      "status": "active",
+      "coordinates": {
+        "latitude": 40.1792,
+        "longitude": 44.4991
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/am-73.crt",
+      "private_key": "keys/am-73.key"
+    },
+    {
+      "id": "by-39",
+      "region": "Europe",
+      "country": "Belarus",
+      "city": "Minsk",
+      "ip": "188.219.59.19",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 5906,
+      "status": "active",
+      "coordinates": {
+        "latitude": 53.9045,
+        "longitude": 27.5615
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/by-39.crt",
+      "private_key": "keys/by-39.key"
+    },
+    {
+      "id": "ba-14",
+      "region": "Europe",
+      "country": "Bosnia and Herzegovina",
+      "city": "Sarajevo",
+      "ip": "176.187.87.241",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 8577,
+      "status": "active",
+      "coordinates": {
+        "latitude": 43.8563,
+        "longitude": 18.4131
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/ba-14.crt",
+      "private_key": "keys/ba-14.key"
+    },
+    {
+      "id": "cy-61",
+      "region": "Europe",
+      "country": "Cyprus",
+      "city": "Nicosia",
+      "ip": "164.51.66.18",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 5385,
+      "status": "active",
+      "coordinates": {
+        "latitude": 35.1856,
+        "longitude": 33.3823
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/cy-61.crt",
+      "private_key": "keys/cy-61.key"
+    },
+    {
+      "id": "ee-90",
+      "region": "Europe",
+      "country": "Estonia",
+      "city": "Tallinn",
+      "ip": "63.91.48.41",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 8586,
+      "status": "active",
+      "coordinates": {
+        "latitude": 59.437,
+        "longitude": 24.7536
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/ee-90.crt",
+      "private_key": "keys/ee-90.key"
+    },
+    {
+      "id": "ge-04",
+      "region": "Europe",
+      "country": "Georgia",
+      "city": "Tbilisi",
+      "ip": "80.114.118.31",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 5914,
+      "status": "active",
+      "coordinates": {
+        "latitude": 41.7151,
+        "longitude": 44.8271
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/ge-04.crt",
+      "private_key": "keys/ge-04.key"
+    },
+    {
+      "id": "is-17",
+      "region": "Europe",
+      "country": "Iceland",
+      "city": "Reykjavik",
+      "ip": "214.46.167.100",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 8133,
+      "status": "active",
+      "coordinates": {
+        "latitude": 64.1466,
+        "longitude": -21.9426
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/is-17.crt",
+      "private_key": "keys/is-17.key"
+    },
+    {
+      "id": "lv-79",
+      "region": "Europe",
+      "country": "Latvia",
+      "city": "Riga",
+      "ip": "147.131.253.202",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 9078,
+      "status": "active",
+      "coordinates": {
+        "latitude": 56.9496,
+        "longitude": 24.1052
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/lv-79.crt",
+      "private_key": "keys/lv-79.key"
+    },
+    {
+      "id": "li-20",
+      "region": "Europe",
+      "country": "Liechtenstein",
+      "city": "Vaduz",
+      "ip": "163.13.196.130",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 6722,
+      "status": "active",
+      "coordinates": {
+        "latitude": 47.141,
+        "longitude": 9.5209
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/li-20.crt",
+      "private_key": "keys/li-20.key"
+    },
+    {
+      "id": "lt-11",
+      "region": "Europe",
+      "country": "Lithuania",
+      "city": "Vilnius",
+      "ip": "144.142.63.178",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 9206,
+      "status": "active",
+      "coordinates": {
+        "latitude": 54.6872,
+        "longitude": 25.2797
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/lt-11.crt",
+      "private_key": "keys/lt-11.key"
+    },
+    {
+      "id": "lu-27",
+      "region": "Europe",
+      "country": "Luxembourg",
+      "city": "Luxembourg City",
+      "ip": "172.1.203.104",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 5204,
+      "status": "active",
+      "coordinates": {
+        "latitude": 49.6116,
+        "longitude": 6.1319
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/lu-27.crt",
+      "private_key": "keys/lu-27.key"
+    },
+    {
+      "id": "mt-83",
+      "region": "Europe",
+      "country": "Malta",
+      "city": "Valletta",
+      "ip": "158.164.179.217",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 8416,
+      "status": "active",
+      "coordinates": {
+        "latitude": 35.8989,
+        "longitude": 14.5146
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/mt-83.crt",
+      "private_key": "keys/mt-83.key"
+    },
+    {
+      "id": "md-10",
+      "region": "Europe",
+      "country": "Moldova",
+      "city": "Chisinau",
+      "ip": "215.219.60.229",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 6730,
+      "status": "active",
+      "coordinates": {
+        "latitude": 47.0105,
+        "longitude": 28.8638
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/md-10.crt",
+      "private_key": "keys/md-10.key"
+    },
+    {
+      "id": "mc-47",
+      "region": "Europe",
+      "country": "Monaco",
+      "city": "Monaco",
+      "ip": "65.97.250.217",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 6794,
+      "status": "active",
+      "coordinates": {
+        "latitude": 43.7384,
+        "longitude": 7.4246
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/mc-47.crt",
+      "private_key": "keys/mc-47.key"
+    },
+    {
+      "id": "me-85",
+      "region": "Europe",
+      "country": "Montenegro",
+      "city": "Podgorica",
+      "ip": "180.63.20.44",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 7178,
+      "status": "active",
+      "coordinates": {
+        "latitude": 42.4304,
+        "longitude": 19.2594
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/me-85.crt",
+      "private_key": "keys/me-85.key"
+    },
+    {
+      "id": "mk-28",
+      "region": "Europe",
+      "country": "North Macedonia",
+      "city": "Skopje",
+      "ip": "147.168.174.211",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 5978,
+      "status": "active",
+      "coordinates": {
+        "latitude": 41.9973,
+        "longitude": 21.428
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/mk-28.crt",
+      "private_key": "keys/mk-28.key"
+    },
+    {
+      "id": "sm-81",
+      "region": "Europe",
+      "country": "San Marino",
+      "city": "San Marino",
+      "ip": "212.126.225.210",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 9225,
+      "status": "active",
+      "coordinates": {
+        "latitude": 43.9424,
+        "longitude": 12.4578
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/sm-81.crt",
+      "private_key": "keys/sm-81.key"
+    },
+    {
+      "id": "si-21",
+      "region": "Europe",
+      "country": "Slovenia",
+      "city": "Ljubljana",
+      "ip": "170.99.9.53",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 9404,
+      "status": "active",
+      "coordinates": {
+        "latitude": 46.0569,
+        "longitude": 14.5058
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/si-21.crt",
+      "private_key": "keys/si-21.key"
+    },
+    {
+      "id": "af-82",
+      "region": "Asia",
+      "country": "Afghanistan",
+      "city": "Kabul",
+      "ip": "163.181.173.213",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 6246,
+      "status": "active",
+      "coordinates": {
+        "latitude": 34.5553,
+        "longitude": 69.2075
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/af-82.crt",
+      "private_key": "keys/af-82.key"
+    },
+    {
+      "id": "az-83",
+      "region": "Asia",
+      "country": "Azerbaijan",
+      "city": "Baku",
+      "ip": "147.72.102.214",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 3717,
+      "status": "active",
+      "coordinates": {
+        "latitude": 40.4093,
+        "longitude": 49.8671
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/az-83.crt",
+      "private_key": "keys/az-83.key"
+    },
+    {
+      "id": "bh-74",
+      "region": "Asia",
+      "country": "Bahrain",
+      "city": "Manama",
+      "ip": "45.6.236.187",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 3854,
+      "status": "active",
+      "coordinates": {
+        "latitude": 26.2285,
+        "longitude": 50.586
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/bh-74.crt",
+      "private_key": "keys/bh-74.key"
+    },
+    {
+      "id": "bd-62",
+      "region": "Asia",
+      "country": "Bangladesh",
+      "city": "Dhaka",
+      "ip": "5.130.215.222",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 4850,
+      "status": "active",
+      "coordinates": {
+        "latitude": 23.8103,
+        "longitude": 90.4125
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/bd-62.crt",
+      "private_key": "keys/bd-62.key"
+    },
+    {
+      "id": "bt-36",
+      "region": "Asia",
+      "country": "Bhutan",
+      "city": "Thimphu",
+      "ip": "94.183.161.136",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 4260,
+      "status": "active",
+      "coordinates": {
+        "latitude": 27.4728,
+        "longitude": 89.639
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/bt-36.crt",
+      "private_key": "keys/bt-36.key"
+    },
+    {
+      "id": "bn-53",
+      "region": "Asia",
+      "country": "Brunei",
+      "city": "Bandar Seri Begawan",
+      "ip": "168.73.145.201",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 4917,
+      "status": "active",
+      "coordinates": {
+        "latitude": 4.9031,
+        "longitude": 114.9398
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/bn-53.crt",
+      "private_key": "keys/bn-53.key"
+    },
+    {
+      "id": "kh-87",
+      "region": "Asia",
+      "country": "Cambodia",
+      "city": "Phnom Penh",
+      "ip": "185.56.75.161",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 5257,
+      "status": "active",
+      "coordinates": {
+        "latitude": 11.5564,
+        "longitude": 104.9282
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/kh-87.crt",
+      "private_key": "keys/kh-87.key"
+    },
+    {
+      "id": "cn-23",
+      "region": "Asia",
+      "country": "China",
+      "city": "Beijing",
+      "ip": "160.26.204.14",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 7146,
+      "status": "active",
+      "coordinates": {
+        "latitude": 39.9042,
+        "longitude": 116.4074
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/cn-23.crt",
+      "private_key": "keys/cn-23.key"
+    },
+    {
+      "id": "hk-86",
+      "region": "Asia",
+      "country": "Hong Kong",
+      "city": "Hong Kong",
+      "ip": "185.142.105.74",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 6720,
+      "status": "active",
+      "coordinates": {
+        "latitude": 22.3193,
+        "longitude": 114.1694
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/hk-86.crt",
+      "private_key": "keys/hk-86.key"
+    },
+    {
+      "id": "in-35",
+      "region": "Asia",
+      "country": "India",
+      "city": "New Delhi",
+      "ip": "180.230.77.245",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 3920,
+      "status": "active",
+      "coordinates": {
+        "latitude": 28.6139,
+        "longitude": 77.209
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/in-35.crt",
+      "private_key": "keys/in-35.key"
+    },
+    {
+      "id": "id-46",
+      "region": "Asia",
+      "country": "Indonesia",
+      "city": "Jakarta",
+      "ip": "206.123.211.147",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 4502,
+      "status": "active",
+      "coordinates": {
+        "latitude": -6.2088,
+        "longitude": 106.8456
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/id-46.crt",
+      "private_key": "keys/id-46.key"
+    },
+    {
+      "id": "ir-01",
+      "region": "Asia",
+      "country": "Iran",
+      "city": "Tehran",
+      "ip": "214.8.159.139",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 4323,
+      "status": "active",
+      "coordinates": {
+        "latitude": 35.6892,
+        "longitude": 51.389
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/ir-01.crt",
+      "private_key": "keys/ir-01.key"
+    },
+    {
+      "id": "iq-23",
+      "region": "Asia",
+      "country": "Iraq",
+      "city": "Baghdad",
+      "ip": "189.21.235.43",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 3312,
+      "status": "active",
+      "coordinates": {
+        "latitude": 33.3152,
+        "longitude": 44.3661
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/iq-23.crt",
+      "private_key": "keys/iq-23.key"
+    },
+    {
+      "id": "il-73",
+      "region": "Asia",
+      "country": "Israel",
+      "city": "Jerusalem",
+      "ip": "147.40.213.53",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 3522,
+      "status": "active",
+      "coordinates": {
+        "latitude": 31.7683,
+        "longitude": 35.2137
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/il-73.crt",
+      "private_key": "keys/il-73.key"
+    },
+    {
+      "id": "jo-78",
+      "region": "Asia",
+      "country": "Jordan",
+      "city": "Amman",
+      "ip": "85.129.6.57",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 4795,
+      "status": "active",
+      "coordinates": {
+        "latitude": 31.9454,
+        "longitude": 35.9284
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/jo-78.crt",
+      "private_key": "keys/jo-78.key"
+    },
+    {
+      "id": "kz-96",
+      "region": "Asia",
+      "country": "Kazakhstan",
+      "city": "Nur-Sultan",
+      "ip": "211.151.26.123",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 7513,
+      "status": "active",
+      "coordinates": {
+        "latitude": 51.1694,
+        "longitude": 71.4491
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/kz-96.crt",
+      "private_key": "keys/kz-96.key"
+    },
+    {
+      "id": "kw-21",
+      "region": "Asia",
+      "country": "Kuwait",
+      "city": "Kuwait City",
+      "ip": "134.41.47.226",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 5057,
+      "status": "active",
+      "coordinates": {
+        "latitude": 29.3759,
+        "longitude": 47.9774
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/kw-21.crt",
+      "private_key": "keys/kw-21.key"
+    },
+    {
+      "id": "kg-80",
+      "region": "Asia",
+      "country": "Kyrgyzstan",
+      "city": "Bishkek",
+      "ip": "178.72.242.126",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 7966,
+      "status": "active",
+      "coordinates": {
+        "latitude": 42.8746,
+        "longitude": 74.5698
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/kg-80.crt",
+      "private_key": "keys/kg-80.key"
+    },
+    {
+      "id": "la-28",
+      "region": "Asia",
+      "country": "Laos",
+      "city": "Vientiane",
+      "ip": "207.183.248.127",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 5417,
+      "status": "active",
+      "coordinates": {
+        "latitude": 17.9757,
+        "longitude": 102.6331
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/la-28.crt",
+      "private_key": "keys/la-28.key"
+    },
+    {
+      "id": "lb-06",
+      "region": "Asia",
+      "country": "Lebanon",
+      "city": "Beirut",
+      "ip": "189.223.204.212",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 3730,
+      "status": "active",
+      "coordinates": {
+        "latitude": 33.8938,
+        "longitude": 35.5018
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/lb-06.crt",
+      "private_key": "keys/lb-06.key"
+    },
+    {
+      "id": "mo-43",
+      "region": "Asia",
+      "country": "Macau",
+      "city": "Macau",
+      "ip": "163.35.148.119",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 4701,
+      "status": "active",
+      "coordinates": {
+        "latitude": 22.1987,
+        "longitude": 113.5439
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/mo-43.crt",
+      "private_key": "keys/mo-43.key"
+    },
+    {
+      "id": "my-06",
+      "region": "Asia",
+      "country": "Malaysia",
+      "city": "Kuala Lumpur",
+      "ip": "168.44.55.161",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 3989,
+      "status": "active",
+      "coordinates": {
+        "latitude": 3.139,
+        "longitude": 101.6869
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/my-06.crt",
+      "private_key": "keys/my-06.key"
+    },
+    {
+      "id": "mv-78",
+      "region": "Asia",
+      "country": "Maldives",
+      "city": "Male",
+      "ip": "167.34.170.178",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 5943,
+      "status": "active",
+      "coordinates": {
+        "latitude": 4.1755,
+        "longitude": 73.5093
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/mv-78.crt",
+      "private_key": "keys/mv-78.key"
+    },
+    {
+      "id": "mn-76",
+      "region": "Asia",
+      "country": "Mongolia",
+      "city": "Ulaanbaatar",
+      "ip": "211.131.60.161",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 5721,
+      "status": "active",
+      "coordinates": {
+        "latitude": 47.8864,
+        "longitude": 106.9057
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/mn-76.crt",
+      "private_key": "keys/mn-76.key"
+    },
+    {
+      "id": "mm-73",
+      "region": "Asia",
+      "country": "Myanmar",
+      "city": "Naypyidaw",
+      "ip": "208.73.235.220",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 5073,
+      "status": "active",
+      "coordinates": {
+        "latitude": 19.7633,
+        "longitude": 96.0785
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/mm-73.crt",
+      "private_key": "keys/mm-73.key"
+    },
+    {
+      "id": "np-84",
+      "region": "Asia",
+      "country": "Nepal",
+      "city": "Kathmandu",
+      "ip": "5.45.189.240",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 4395,
+      "status": "active",
+      "coordinates": {
+        "latitude": 27.7172,
+        "longitude": 85.324
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/np-84.crt",
+      "private_key": "keys/np-84.key"
+    },
+    {
+      "id": "kp-15",
+      "region": "Asia",
+      "country": "North Korea",
+      "city": "Pyongyang",
+      "ip": "85.38.86.44",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 7549,
+      "status": "active",
+      "coordinates": {
+        "latitude": 39.0392,
+        "longitude": 125.7625
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/kp-15.crt",
+      "private_key": "keys/kp-15.key"
+    },
+    {
+      "id": "om-83",
+      "region": "Asia",
+      "country": "Oman",
+      "city": "Muscat",
+      "ip": "169.201.90.109",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 4793,
+      "status": "active",
+      "coordinates": {
+        "latitude": 23.588,
+        "longitude": 58.3829
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/om-83.crt",
+      "private_key": "keys/om-83.key"
+    },
+    {
+      "id": "pk-72",
+      "region": "Asia",
+      "country": "Pakistan",
+      "city": "Islamabad",
+      "ip": "166.241.105.158",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 6492,
+      "status": "active",
+      "coordinates": {
+        "latitude": 33.6844,
+        "longitude": 73.0479
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/pk-72.crt",
+      "private_key": "keys/pk-72.key"
+    },
+    {
+      "id": "ps-27",
+      "region": "Asia",
+      "country": "Palestine",
+      "city": "Ramallah",
+      "ip": "217.59.225.101",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 5527,
+      "status": "active",
+      "coordinates": {
+        "latitude": 31.9038,
+        "longitude": 35.2034
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/ps-27.crt",
+      "private_key": "keys/ps-27.key"
+    },
+    {
+      "id": "ph-69",
+      "region": "Asia",
+      "country": "Philippines",
+      "city": "Manila",
+      "ip": "180.231.195.125",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 6058,
+      "status": "active",
+      "coordinates": {
+        "latitude": 14.5995,
+        "longitude": 120.9842
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/ph-69.crt",
+      "private_key": "keys/ph-69.key"
+    },
+    {
+      "id": "qa-23",
+      "region": "Asia",
+      "country": "Qatar",
+      "city": "Doha",
+      "ip": "204.224.159.167",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 4941,
+      "status": "active",
+      "coordinates": {
+        "latitude": 25.2854,
+        "longitude": 51.531
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/qa-23.crt",
+      "private_key": "keys/qa-23.key"
+    },
+    {
+      "id": "sa-25",
+      "region": "Asia",
+      "country": "Saudi Arabia",
+      "city": "Riyadh",
+      "ip": "168.186.218.167",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 5469,
+      "status": "active",
+      "coordinates": {
+        "latitude": 24.7136,
+        "longitude": 46.6753
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/sa-25.crt",
+      "private_key": "keys/sa-25.key"
+    },
+    {
+      "id": "kr-01",
+      "region": "Asia",
+      "country": "South Korea",
+      "city": "Seoul",
+      "ip": "146.136.202.105",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 3626,
+      "status": "active",
+      "coordinates": {
+        "latitude": 37.5665,
+        "longitude": 126.978
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/kr-01.crt",
+      "private_key": "keys/kr-01.key"
+    },
+    {
+      "id": "lk-53",
+      "region": "Asia",
+      "country": "Sri Lanka",
+      "city": "Colombo",
+      "ip": "161.128.73.19",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 4517,
+      "status": "active",
+      "coordinates": {
+        "latitude": 6.9271,
+        "longitude": 79.8612
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/lk-53.crt",
+      "private_key": "keys/lk-53.key"
+    },
+    {
+      "id": "sy-44",
+      "region": "Asia",
+      "country": "Syria",
+      "city": "Damascus",
+      "ip": "170.46.110.160",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 3080,
+      "status": "active",
+      "coordinates": {
+        "latitude": 33.5138,
+        "longitude": 36.2765
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/sy-44.crt",
+      "private_key": "keys/sy-44.key"
+    },
+    {
+      "id": "tw-23",
+      "region": "Asia",
+      "country": "Taiwan",
+      "city": "Taipei",
+      "ip": "166.111.242.191",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 3438,
+      "status": "active",
+      "coordinates": {
+        "latitude": 25.033,
+        "longitude": 121.5654
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/tw-23.crt",
+      "private_key": "keys/tw-23.key"
+    },
+    {
+      "id": "tj-74",
+      "region": "Asia",
+      "country": "Tajikistan",
+      "city": "Dushanbe",
+      "ip": "65.9.136.142",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 5470,
+      "status": "active",
+      "coordinates": {
+        "latitude": 38.5598,
+        "longitude": 68.787
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/tj-74.crt",
+      "private_key": "keys/tj-74.key"
+    },
+    {
+      "id": "th-86",
+      "region": "Asia",
+      "country": "Thailand",
+      "city": "Bangkok",
+      "ip": "194.218.165.136",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 6293,
+      "status": "active",
+      "coordinates": {
+        "latitude": 13.7563,
+        "longitude": 100.5018
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/th-86.crt",
+      "private_key": "keys/th-86.key"
+    },
+    {
+      "id": "tl-94",
+      "region": "Asia",
+      "country": "Timor-Leste",
+      "city": "Dili",
+      "ip": "179.102.60.144",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 4958,
+      "status": "active",
+      "coordinates": {
+        "latitude": -8.5586,
+        "longitude": 125.5736
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/tl-94.crt",
+      "private_key": "keys/tl-94.key"
+    },
+    {
+      "id": "tr-20",
+      "region": "Asia",
+      "country": "Turkey",
+      "city": "Ankara",
+      "ip": "190.37.231.83",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 6166,
+      "status": "active",
+      "coordinates": {
+        "latitude": 39.9334,
+        "longitude": 32.8597
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/tr-20.crt",
+      "private_key": "keys/tr-20.key"
+    },
+    {
+      "id": "tm-78",
+      "region": "Asia",
+      "country": "Turkmenistan",
+      "city": "Ashgabat",
+      "ip": "85.209.221.182",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 3270,
+      "status": "active",
+      "coordinates": {
+        "latitude": 37.9601,
+        "longitude": 58.326
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/tm-78.crt",
+      "private_key": "keys/tm-78.key"
+    },
+    {
+      "id": "ae-06",
+      "region": "Asia",
+      "country": "United Arab Emirates",
+      "city": "Abu Dhabi",
+      "ip": "165.101.41.38",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 5881,
+      "status": "active",
+      "coordinates": {
+        "latitude": 24.4539,
+        "longitude": 54.3773
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/ae-06.crt",
+      "private_key": "keys/ae-06.key"
+    },
+    {
+      "id": "uz-10",
+      "region": "Asia",
+      "country": "Uzbekistan",
+      "city": "Tashkent",
+      "ip": "72.99.209.103",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 3934,
+      "status": "active",
+      "coordinates": {
+        "latitude": 41.2995,
+        "longitude": 69.2401
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/uz-10.crt",
+      "private_key": "keys/uz-10.key"
+    },
+    {
+      "id": "vn-75",
+      "region": "Asia",
+      "country": "Vietnam",
+      "city": "Hanoi",
+      "ip": "205.10.199.146",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 6481,
+      "status": "active",
+      "coordinates": {
+        "latitude": 21.0285,
+        "longitude": 105.8542
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/vn-75.crt",
+      "private_key": "keys/vn-75.key"
+    },
+    {
+      "id": "ye-66",
+      "region": "Asia",
+      "country": "Yemen",
+      "city": "Sanaa",
+      "ip": "85.54.229.4",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 3008,
+      "status": "active",
+      "coordinates": {
+        "latitude": 15.3694,
+        "longitude": 44.191
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/ye-66.crt",
+      "private_key": "keys/ye-66.key"
+    },
+    {
+      "id": "dz-04",
+      "region": "Africa",
+      "country": "Algeria",
+      "city": "Algiers",
+      "ip": "187.212.227.59",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 2096,
+      "status": "active",
+      "coordinates": {
+        "latitude": 36.7538,
+        "longitude": 3.0588
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/dz-04.crt",
+      "private_key": "keys/dz-04.key"
+    },
+    {
+      "id": "ao-56",
+      "region": "Africa",
+      "country": "Angola",
+      "city": "Luanda",
+      "ip": "181.68.120.118",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 3578,
+      "status": "active",
+      "coordinates": {
+        "latitude": -8.8383,
+        "longitude": 13.2344
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/ao-56.crt",
+      "private_key": "keys/ao-56.key"
+    },
+    {
+      "id": "bj-45",
+      "region": "Africa",
+      "country": "Benin",
+      "city": "Porto-Novo",
+      "ip": "202.250.227.47",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 3344,
+      "status": "active",
+      "coordinates": {
+        "latitude": 6.4969,
+        "longitude": 2.6283
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/bj-45.crt",
+      "private_key": "keys/bj-45.key"
+    },
+    {
+      "id": "bw-19",
+      "region": "Africa",
+      "country": "Botswana",
+      "city": "Gaborone",
+      "ip": "204.177.149.91",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 1952,
+      "status": "active",
+      "coordinates": {
+        "latitude": -24.6282,
+        "longitude": 25.9231
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/bw-19.crt",
+      "private_key": "keys/bw-19.key"
+    },
+    {
+      "id": "bf-58",
+      "region": "Africa",
+      "country": "Burkina Faso",
+      "city": "Ouagadougou",
+      "ip": "215.5.197.199",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 2570,
+      "status": "active",
+      "coordinates": {
+        "latitude": 12.3714,
+        "longitude": -1.5197
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/bf-58.crt",
+      "private_key": "keys/bf-58.key"
+    },
+    {
+      "id": "bi-23",
+      "region": "Africa",
+      "country": "Burundi",
+      "city": "Gitega",
+      "ip": "65.199.24.139",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 2596,
+      "status": "active",
+      "coordinates": {
+        "latitude": -3.4271,
+        "longitude": 29.9267
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/bi-23.crt",
+      "private_key": "keys/bi-23.key"
+    },
+    {
+      "id": "cv-80",
+      "region": "Africa",
+      "country": "Cabo Verde",
+      "city": "Praia",
+      "ip": "211.132.119.116",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 3381,
+      "status": "active",
+      "coordinates": {
+        "latitude": 14.9333,
+        "longitude": -23.5133
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/cv-80.crt",
+      "private_key": "keys/cv-80.key"
+    },
+    {
+      "id": "cm-43",
+      "region": "Africa",
+      "country": "Cameroon",
+      "city": "Yaoundé",
+      "ip": "134.120.77.49",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 2654,
+      "status": "active",
+      "coordinates": {
+        "latitude": 3.848,
+        "longitude": 11.5021
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/cm-43.crt",
+      "private_key": "keys/cm-43.key"
+    },
+    {
+      "id": "cf-44",
+      "region": "Africa",
+      "country": "Central African Republic",
+      "city": "Bangui",
+      "ip": "170.101.15.130",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 1922,
+      "status": "active",
+      "coordinates": {
+        "latitude": 4.3947,
+        "longitude": 18.5582
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/cf-44.crt",
+      "private_key": "keys/cf-44.key"
+    },
+    {
+      "id": "td-74",
+      "region": "Africa",
+      "country": "Chad",
+      "city": "N'Djamena",
+      "ip": "130.119.167.128",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 3745,
+      "status": "active",
+      "coordinates": {
+        "latitude": 12.1348,
+        "longitude": 15.0557
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/td-74.crt",
+      "private_key": "keys/td-74.key"
+    },
+    {
+      "id": "km-04",
+      "region": "Africa",
+      "country": "Comoros",
+      "city": "Moroni",
+      "ip": "23.144.207.62",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 1597,
+      "status": "active",
+      "coordinates": {
+        "latitude": -11.7172,
+        "longitude": 43.2473
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/km-04.crt",
+      "private_key": "keys/km-04.key"
+    },
+    {
+      "id": "cg-17",
+      "region": "Africa",
+      "country": "Congo",
+      "city": "Brazzaville",
+      "ip": "93.56.172.206",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 3554,
+      "status": "active",
+      "coordinates": {
+        "latitude": -4.2634,
+        "longitude": 15.2429
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/cg-17.crt",
+      "private_key": "keys/cg-17.key"
+    },
+    {
+      "id": "ci-71",
+      "region": "Africa",
+      "country": "Côte d'Ivoire",
+      "city": "Yamoussoukro",
+      "ip": "131.155.227.140",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 1994,
+      "status": "active",
+      "coordinates": {
+        "latitude": 6.8276,
+        "longitude": -5.2893
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/ci-71.crt",
+      "private_key": "keys/ci-71.key"
+    },
+    {
+      "id": "dj-24",
+      "region": "Africa",
+      "country": "Djibouti",
+      "city": "Djibouti",
+      "ip": "210.253.84.203",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 2949,
+      "status": "active",
+      "coordinates": {
+        "latitude": 11.8251,
+        "longitude": 42.5903
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/dj-24.crt",
+      "private_key": "keys/dj-24.key"
+    },
+    {
+      "id": "eg-22",
+      "region": "Africa",
+      "country": "Egypt",
+      "city": "Cairo",
+      "ip": "196.99.229.214",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 2424,
+      "status": "active",
+      "coordinates": {
+        "latitude": 30.0444,
+        "longitude": 31.2357
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/eg-22.crt",
+      "private_key": "keys/eg-22.key"
+    },
+    {
+      "id": "gq-22",
+      "region": "Africa",
+      "country": "Equatorial Guinea",
+      "city": "Malabo",
+      "ip": "199.43.240.143",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 3728,
+      "status": "active",
+      "coordinates": {
+        "latitude": 3.7504,
+        "longitude": 8.7371
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/gq-22.crt",
+      "private_key": "keys/gq-22.key"
+    },
+    {
+      "id": "er-33",
+      "region": "Africa",
+      "country": "Eritrea",
+      "city": "Asmara",
+      "ip": "180.43.148.207",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 2088,
+      "status": "active",
+      "coordinates": {
+        "latitude": 15.3229,
+        "longitude": 38.9251
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/er-33.crt",
+      "private_key": "keys/er-33.key"
+    },
+    {
+      "id": "sz-93",
+      "region": "Africa",
+      "country": "Eswatini",
+      "city": "Mbabane",
+      "ip": "197.8.137.59",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 3001,
+      "status": "active",
+      "coordinates": {
+        "latitude": -26.3054,
+        "longitude": 31.1367
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/sz-93.crt",
+      "private_key": "keys/sz-93.key"
+    },
+    {
+      "id": "et-20",
+      "region": "Africa",
+      "country": "Ethiopia",
+      "city": "Addis Ababa",
+      "ip": "45.232.38.15",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 3034,
+      "status": "active",
+      "coordinates": {
+        "latitude": 9.0084,
+        "longitude": 38.7575
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/et-20.crt",
+      "private_key": "keys/et-20.key"
+    },
+    {
+      "id": "ga-72",
+      "region": "Africa",
+      "country": "Gabon",
+      "city": "Libreville",
+      "ip": "212.191.140.6",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 2986,
+      "status": "active",
+      "coordinates": {
+        "latitude": 0.4162,
+        "longitude": 9.4673
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/ga-72.crt",
+      "private_key": "keys/ga-72.key"
+    },
+    {
+      "id": "gm-60",
+      "region": "Africa",
+      "country": "Gambia",
+      "city": "Banjul",
+      "ip": "215.202.16.9",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 3161,
+      "status": "active",
+      "coordinates": {
+        "latitude": 13.4549,
+        "longitude": -16.579
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/gm-60.crt",
+      "private_key": "keys/gm-60.key"
+    },
+    {
+      "id": "gh-45",
+      "region": "Africa",
+      "country": "Ghana",
+      "city": "Accra",
+      "ip": "191.6.195.90",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 3087,
+      "status": "active",
+      "coordinates": {
+        "latitude": 5.6037,
+        "longitude": -0.187
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/gh-45.crt",
+      "private_key": "keys/gh-45.key"
+    },
+    {
+      "id": "gn-51",
+      "region": "Africa",
+      "country": "Guinea",
+      "city": "Conakry",
+      "ip": "146.182.117.179",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 2903,
+      "status": "active",
+      "coordinates": {
+        "latitude": 9.6412,
+        "longitude": -13.5784
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/gn-51.crt",
+      "private_key": "keys/gn-51.key"
+    },
+    {
+      "id": "gw-65",
+      "region": "Africa",
+      "country": "Guinea-Bissau",
+      "city": "Bissau",
+      "ip": "94.16.101.2",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 1976,
+      "status": "active",
+      "coordinates": {
+        "latitude": 11.8816,
+        "longitude": -15.6178
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/gw-65.crt",
+      "private_key": "keys/gw-65.key"
+    },
+    {
+      "id": "ke-46",
+      "region": "Africa",
+      "country": "Kenya",
+      "city": "Nairobi",
+      "ip": "45.33.110.228",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 1736,
+      "status": "active",
+      "coordinates": {
+        "latitude": -1.2921,
+        "longitude": 36.8219
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/ke-46.crt",
+      "private_key": "keys/ke-46.key"
+    },
+    {
+      "id": "ls-41",
+      "region": "Africa",
+      "country": "Lesotho",
+      "city": "Maseru",
+      "ip": "89.219.206.236",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 1852,
+      "status": "active",
+      "coordinates": {
+        "latitude": -29.3142,
+        "longitude": 27.4833
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/ls-41.crt",
+      "private_key": "keys/ls-41.key"
+    },
+    {
+      "id": "lr-74",
+      "region": "Africa",
+      "country": "Liberia",
+      "city": "Monrovia",
+      "ip": "199.221.119.16",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 2647,
+      "status": "active",
+      "coordinates": {
+        "latitude": 6.3004,
+        "longitude": -10.7969
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/lr-74.crt",
+      "private_key": "keys/lr-74.key"
+    },
+    {
+      "id": "ly-87",
+      "region": "Africa",
+      "country": "Libya",
+      "city": "Tripoli",
+      "ip": "94.102.190.58",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 3901,
+      "status": "active",
+      "coordinates": {
+        "latitude": 32.8872,
+        "longitude": 13.1913
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/ly-87.crt",
+      "private_key": "keys/ly-87.key"
+    },
+    {
+      "id": "mg-39",
+      "region": "Africa",
+      "country": "Madagascar",
+      "city": "Antananarivo",
+      "ip": "107.54.107.49",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 2948,
+      "status": "active",
+      "coordinates": {
+        "latitude": -18.8792,
+        "longitude": 47.5079
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/mg-39.crt",
+      "private_key": "keys/mg-39.key"
+    },
+    {
+      "id": "mw-54",
+      "region": "Africa",
+      "country": "Malawi",
+      "city": "Lilongwe",
+      "ip": "179.189.212.232",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 3670,
+      "status": "active",
+      "coordinates": {
+        "latitude": -13.9626,
+        "longitude": 33.7741
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/mw-54.crt",
+      "private_key": "keys/mw-54.key"
+    },
+    {
+      "id": "ml-40",
+      "region": "Africa",
+      "country": "Mali",
+      "city": "Bamako",
+      "ip": "31.153.216.234",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 2111,
+      "status": "active",
+      "coordinates": {
+        "latitude": 12.6392,
+        "longitude": -8.0029
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/ml-40.crt",
+      "private_key": "keys/ml-40.key"
+    },
+    {
+      "id": "mr-53",
+      "region": "Africa",
+      "country": "Mauritania",
+      "city": "Nouakchott",
+      "ip": "165.165.110.120",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 3035,
+      "status": "active",
+      "coordinates": {
+        "latitude": 18.0735,
+        "longitude": -15.9582
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/mr-53.crt",
+      "private_key": "keys/mr-53.key"
+    },
+    {
+      "id": "mu-90",
+      "region": "Africa",
+      "country": "Mauritius",
+      "city": "Port Louis",
+      "ip": "146.161.89.50",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 2835,
+      "status": "active",
+      "coordinates": {
+        "latitude": -20.1609,
+        "longitude": 57.5012
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/mu-90.crt",
+      "private_key": "keys/mu-90.key"
+    },
+    {
+      "id": "ma-24",
+      "region": "Africa",
+      "country": "Morocco",
+      "city": "Rabat",
+      "ip": "159.200.247.224",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 1992,
+      "status": "active",
+      "coordinates": {
+        "latitude": 33.9716,
+        "longitude": -6.8498
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/ma-24.crt",
+      "private_key": "keys/ma-24.key"
+    },
+    {
+      "id": "mz-21",
+      "region": "Africa",
+      "country": "Mozambique",
+      "city": "Maputo",
+      "ip": "185.187.55.45",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 3415,
+      "status": "active",
+      "coordinates": {
+        "latitude": -25.9655,
+        "longitude": 32.5832
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/mz-21.crt",
+      "private_key": "keys/mz-21.key"
+    },
+    {
+      "id": "na-11",
+      "region": "Africa",
+      "country": "Namibia",
+      "city": "Windhoek",
+      "ip": "23.233.243.209",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 2070,
+      "status": "active",
+      "coordinates": {
+        "latitude": -22.5609,
+        "longitude": 17.0658
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/na-11.crt",
+      "private_key": "keys/na-11.key"
+    },
+    {
+      "id": "ne-87",
+      "region": "Africa",
+      "country": "Niger",
+      "city": "Niamey",
+      "ip": "211.230.213.151",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 3943,
+      "status": "active",
+      "coordinates": {
+        "latitude": 13.5137,
+        "longitude": 2.1098
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/ne-87.crt",
+      "private_key": "keys/ne-87.key"
+    },
+    {
+      "id": "ng-46",
+      "region": "Africa",
+      "country": "Nigeria",
+      "city": "Abuja",
+      "ip": "178.50.201.200",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 3544,
+      "status": "active",
+      "coordinates": {
+        "latitude": 9.0765,
+        "longitude": 7.3986
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/ng-46.crt",
+      "private_key": "keys/ng-46.key"
+    },
+    {
+      "id": "rw-60",
+      "region": "Africa",
+      "country": "Rwanda",
+      "city": "Kigali",
+      "ip": "191.112.63.49",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 3288,
+      "status": "active",
+      "coordinates": {
+        "latitude": -1.9706,
+        "longitude": 30.1044
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/rw-60.crt",
+      "private_key": "keys/rw-60.key"
+    },
+    {
+      "id": "st-34",
+      "region": "Africa",
+      "country": "Sao Tome and Principe",
+      "city": "São Tomé",
+      "ip": "93.95.230.125",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 1982,
+      "status": "active",
+      "coordinates": {
+        "latitude": 0.3302,
+        "longitude": 6.7333
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/st-34.crt",
+      "private_key": "keys/st-34.key"
+    },
+    {
+      "id": "sn-68",
+      "region": "Africa",
+      "country": "Senegal",
+      "city": "Dakar",
+      "ip": "197.171.211.42",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 2256,
+      "status": "active",
+      "coordinates": {
+        "latitude": 14.7167,
+        "longitude": -17.4677
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/sn-68.crt",
+      "private_key": "keys/sn-68.key"
+    },
+    {
+      "id": "sc-02",
+      "region": "Africa",
+      "country": "Seychelles",
+      "city": "Victoria",
+      "ip": "215.5.59.38",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 2653,
+      "status": "active",
+      "coordinates": {
+        "latitude": -4.6191,
+        "longitude": 55.4513
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/sc-02.crt",
+      "private_key": "keys/sc-02.key"
+    },
+    {
+      "id": "sl-70",
+      "region": "Africa",
+      "country": "Sierra Leone",
+      "city": "Freetown",
+      "ip": "186.236.156.15",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 2482,
+      "status": "active",
+      "coordinates": {
+        "latitude": 8.4657,
+        "longitude": -13.2317
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/sl-70.crt",
+      "private_key": "keys/sl-70.key"
+    },
+    {
+      "id": "so-08",
+      "region": "Africa",
+      "country": "Somalia",
+      "city": "Mogadishu",
+      "ip": "215.161.213.8",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 3022,
+      "status": "active",
+      "coordinates": {
+        "latitude": 2.0469,
+        "longitude": 45.3182
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/so-08.crt",
+      "private_key": "keys/so-08.key"
+    },
+    {
+      "id": "ss-73",
+      "region": "Africa",
+      "country": "South Sudan",
+      "city": "Juba",
+      "ip": "179.146.227.106",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 3015,
+      "status": "active",
+      "coordinates": {
+        "latitude": 4.8594,
+        "longitude": 31.5713
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/ss-73.crt",
+      "private_key": "keys/ss-73.key"
+    },
+    {
+      "id": "sd-90",
+      "region": "Africa",
+      "country": "Sudan",
+      "city": "Khartoum",
+      "ip": "95.147.183.174",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 3204,
+      "status": "active",
+      "coordinates": {
+        "latitude": 15.5007,
+        "longitude": 32.5599
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/sd-90.crt",
+      "private_key": "keys/sd-90.key"
+    },
+    {
+      "id": "tz-89",
+      "region": "Africa",
+      "country": "Tanzania",
+      "city": "Dodoma",
+      "ip": "170.98.40.212",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 2856,
+      "status": "active",
+      "coordinates": {
+        "latitude": -6.163,
+        "longitude": 35.7516
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/tz-89.crt",
+      "private_key": "keys/tz-89.key"
+    },
+    {
+      "id": "tg-40",
+      "region": "Africa",
+      "country": "Togo",
+      "city": "Lomé",
+      "ip": "138.115.212.123",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 3063,
+      "status": "active",
+      "coordinates": {
+        "latitude": 6.1285,
+        "longitude": 1.2255
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/tg-40.crt",
+      "private_key": "keys/tg-40.key"
+    },
+    {
+      "id": "tn-02",
+      "region": "Africa",
+      "country": "Tunisia",
+      "city": "Tunis",
+      "ip": "214.58.243.146",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 2162,
+      "status": "active",
+      "coordinates": {
+        "latitude": 36.8065,
+        "longitude": 10.1815
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/tn-02.crt",
+      "private_key": "keys/tn-02.key"
+    },
+    {
+      "id": "ug-79",
+      "region": "Africa",
+      "country": "Uganda",
+      "city": "Kampala",
+      "ip": "204.13.134.57",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 2871,
+      "status": "active",
+      "coordinates": {
+        "latitude": 0.3476,
+        "longitude": 32.5825
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/ug-79.crt",
+      "private_key": "keys/ug-79.key"
+    },
+    {
+      "id": "zm-31",
+      "region": "Africa",
+      "country": "Zambia",
+      "city": "Lusaka",
+      "ip": "196.217.6.15",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 3625,
+      "status": "active",
+      "coordinates": {
+        "latitude": -15.3875,
+        "longitude": 28.3228
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/zm-31.crt",
+      "private_key": "keys/zm-31.key"
+    },
+    {
+      "id": "zw-34",
+      "region": "Africa",
+      "country": "Zimbabwe",
+      "city": "Harare",
+      "ip": "169.91.61.48",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 2557,
+      "status": "active",
+      "coordinates": {
+        "latitude": -17.8252,
+        "longitude": 31.0335
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/zw-34.crt",
+      "private_key": "keys/zw-34.key"
+    },
+    {
+      "id": "ag-39",
+      "region": "North America",
+      "country": "Antigua and Barbuda",
+      "city": "Saint John's",
+      "ip": "138.107.172.64",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 8923,
+      "status": "active",
+      "coordinates": {
+        "latitude": 17.1175,
+        "longitude": -61.8456
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/ag-39.crt",
+      "private_key": "keys/ag-39.key"
+    },
+    {
+      "id": "bs-65",
+      "region": "North America",
+      "country": "Bahamas",
+      "city": "Nassau",
+      "ip": "181.108.210.218",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 6489,
+      "status": "active",
+      "coordinates": {
+        "latitude": 25.0343,
+        "longitude": -77.3963
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/bs-65.crt",
+      "private_key": "keys/bs-65.key"
+    },
+    {
+      "id": "bb-51",
+      "region": "North America",
+      "country": "Barbados",
+      "city": "Bridgetown",
+      "ip": "207.238.216.4",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 9846,
+      "status": "active",
+      "coordinates": {
+        "latitude": 13.1132,
+        "longitude": -59.5988
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/bb-51.crt",
+      "private_key": "keys/bb-51.key"
+    },
+    {
+      "id": "bz-99",
+      "region": "North America",
+      "country": "Belize",
+      "city": "Belmopan",
+      "ip": "179.200.21.124",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 8102,
+      "status": "active",
+      "coordinates": {
+        "latitude": 17.2514,
+        "longitude": -88.769
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/bz-99.crt",
+      "private_key": "keys/bz-99.key"
+    },
+    {
+      "id": "cr-19",
+      "region": "North America",
+      "country": "Costa Rica",
+      "city": "San José",
+      "ip": "187.228.113.215",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 8079,
+      "status": "active",
+      "coordinates": {
+        "latitude": 9.9281,
+        "longitude": -84.0907
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/cr-19.crt",
+      "private_key": "keys/cr-19.key"
+    },
+    {
+      "id": "cu-12",
+      "region": "North America",
+      "country": "Cuba",
+      "city": "Havana",
+      "ip": "201.179.111.86",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 6034,
+      "status": "active",
+      "coordinates": {
+        "latitude": 23.1136,
+        "longitude": -82.3666
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/cu-12.crt",
+      "private_key": "keys/cu-12.key"
+    },
+    {
+      "id": "dm-02",
+      "region": "North America",
+      "country": "Dominica",
+      "city": "Roseau",
+      "ip": "5.18.146.245",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 7130,
+      "status": "active",
+      "coordinates": {
+        "latitude": 15.301,
+        "longitude": -61.3881
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/dm-02.crt",
+      "private_key": "keys/dm-02.key"
+    },
+    {
+      "id": "do-86",
+      "region": "North America",
+      "country": "Dominican Republic",
+      "city": "Santo Domingo",
+      "ip": "194.4.247.211",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 7781,
+      "status": "active",
+      "coordinates": {
+        "latitude": 18.4861,
+        "longitude": -69.9312
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/do-86.crt",
+      "private_key": "keys/do-86.key"
+    },
+    {
+      "id": "sv-45",
+      "region": "North America",
+      "country": "El Salvador",
+      "city": "San Salvador",
+      "ip": "204.45.254.220",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 5852,
+      "status": "active",
+      "coordinates": {
+        "latitude": 13.6929,
+        "longitude": -89.2182
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/sv-45.crt",
+      "private_key": "keys/sv-45.key"
+    },
+    {
+      "id": "gd-35",
+      "region": "North America",
+      "country": "Grenada",
+      "city": "St. George's",
+      "ip": "194.113.213.11",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 9938,
+      "status": "active",
+      "coordinates": {
+        "latitude": 12.0564,
+        "longitude": -61.7485
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/gd-35.crt",
+      "private_key": "keys/gd-35.key"
+    },
+    {
+      "id": "gt-69",
+      "region": "North America",
+      "country": "Guatemala",
+      "city": "Guatemala City",
+      "ip": "139.250.248.62",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 6075,
+      "status": "active",
+      "coordinates": {
+        "latitude": 14.6349,
+        "longitude": -90.5069
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/gt-69.crt",
+      "private_key": "keys/gt-69.key"
+    },
+    {
+      "id": "ht-71",
+      "region": "North America",
+      "country": "Haiti",
+      "city": "Port-au-Prince",
+      "ip": "176.10.170.121",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 5234,
+      "status": "active",
+      "coordinates": {
+        "latitude": 18.5944,
+        "longitude": -72.3074
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/ht-71.crt",
+      "private_key": "keys/ht-71.key"
+    },
+    {
+      "id": "hn-90",
+      "region": "North America",
+      "country": "Honduras",
+      "city": "Tegucigalpa",
+      "ip": "31.170.234.130",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 7781,
+      "status": "active",
+      "coordinates": {
+        "latitude": 14.0723,
+        "longitude": -87.1921
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/hn-90.crt",
+      "private_key": "keys/hn-90.key"
+    },
+    {
+      "id": "jm-52",
+      "region": "North America",
+      "country": "Jamaica",
+      "city": "Kingston",
+      "ip": "201.105.57.161",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 8565,
+      "status": "active",
+      "coordinates": {
+        "latitude": 18.0179,
+        "longitude": -76.8099
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/jm-52.crt",
+      "private_key": "keys/jm-52.key"
+    },
+    {
+      "id": "ni-32",
+      "region": "North America",
+      "country": "Nicaragua",
+      "city": "Managua",
+      "ip": "166.122.207.240",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 7906,
+      "status": "active",
+      "coordinates": {
+        "latitude": 12.1149,
+        "longitude": -86.2362
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/ni-32.crt",
+      "private_key": "keys/ni-32.key"
+    },
+    {
+      "id": "pa-32",
+      "region": "North America",
+      "country": "Panama",
+      "city": "Panama City",
+      "ip": "187.234.147.160",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 7487,
+      "status": "active",
+      "coordinates": {
+        "latitude": 8.9943,
+        "longitude": -79.5188
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/pa-32.crt",
+      "private_key": "keys/pa-32.key"
+    },
+    {
+      "id": "kn-96",
+      "region": "North America",
+      "country": "Saint Kitts and Nevis",
+      "city": "Basseterre",
+      "ip": "80.197.59.106",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 7242,
+      "status": "active",
+      "coordinates": {
+        "latitude": 17.3026,
+        "longitude": -62.7177
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/kn-96.crt",
+      "private_key": "keys/kn-96.key"
+    },
+    {
+      "id": "lc-56",
+      "region": "North America",
+      "country": "Saint Lucia",
+      "city": "Castries",
+      "ip": "65.203.247.112",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 8570,
+      "status": "active",
+      "coordinates": {
+        "latitude": 14.0101,
+        "longitude": -60.9875
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": true,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/lc-56.crt",
+      "private_key": "keys/lc-56.key"
+    },
+    {
+      "id": "vc-03",
+      "region": "North America",
+      "country": "Saint Vincent and the Grenadines",
+      "city": "Kingstown",
+      "ip": "180.176.30.49",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 6001,
+      "status": "active",
+      "coordinates": {
+        "latitude": 13.1587,
+        "longitude": -61.2248
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/vc-03.crt",
+      "private_key": "keys/vc-03.key"
+    },
+    {
+      "id": "tt-99",
+      "region": "North America",
+      "country": "Trinidad and Tobago",
+      "city": "Port of Spain",
+      "ip": "217.109.136.129",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 8046,
+      "status": "active",
+      "coordinates": {
+        "latitude": 10.6418,
+        "longitude": -61.5199
+      },
+      "capabilities": {
+        "multi_hop": true,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/tt-99.crt",
+      "private_key": "keys/tt-99.key"
+    },
+    {
+      "id": "fj-43",
+      "region": "Oceania",
+      "country": "Fiji",
+      "city": "Suva",
+      "ip": "197.51.191.78",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 4844,
+      "status": "active",
+      "coordinates": {
+        "latitude": -18.1416,
+        "longitude": 178.4419
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": false,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/fj-43.crt",
+      "private_key": "keys/fj-43.key"
+    },
+    {
+      "id": "ki-83",
+      "region": "Oceania",
+      "country": "Kiribati",
+      "city": "Tarawa",
+      "ip": "104.141.15.106",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 4616,
+      "status": "active",
+      "coordinates": {
+        "latitude": 1.329,
+        "longitude": 172.979
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/ki-83.crt",
+      "private_key": "keys/ki-83.key"
+    },
+    {
+      "id": "mh-26",
+      "region": "Oceania",
+      "country": "Marshall Islands",
+      "city": "Majuro",
+      "ip": "23.212.158.37",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 4915,
+      "status": "active",
+      "coordinates": {
+        "latitude": 7.1164,
+        "longitude": 171.1909
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/mh-26.crt",
+      "private_key": "keys/mh-26.key"
+    },
+    {
+      "id": "fm-18",
+      "region": "Oceania",
+      "country": "Micronesia",
+      "city": "Palikir",
+      "ip": "196.243.179.98",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 3275,
+      "status": "active",
+      "coordinates": {
+        "latitude": 6.9248,
+        "longitude": 158.1618
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/fm-18.crt",
+      "private_key": "keys/fm-18.key"
+    },
+    {
+      "id": "nr-74",
+      "region": "Oceania",
+      "country": "Nauru",
+      "city": "Yaren",
+      "ip": "37.15.200.5",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 2096,
+      "status": "active",
+      "coordinates": {
+        "latitude": -0.5477,
+        "longitude": 166.9209
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/nr-74.crt",
+      "private_key": "keys/nr-74.key"
+    },
+    {
+      "id": "nz-15",
+      "region": "Oceania",
+      "country": "New Zealand",
+      "city": "Wellington",
+      "ip": "197.111.216.157",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 3510,
+      "status": "active",
+      "coordinates": {
+        "latitude": -41.2866,
+        "longitude": 174.7756
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/nz-15.crt",
+      "private_key": "keys/nz-15.key"
+    },
+    {
+      "id": "pw-40",
+      "region": "Oceania",
+      "country": "Palau",
+      "city": "Ngerulmud",
+      "ip": "139.31.186.138",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 2925,
+      "status": "active",
+      "coordinates": {
+        "latitude": 7.5,
+        "longitude": 134.6243
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/pw-40.crt",
+      "private_key": "keys/pw-40.key"
+    },
+    {
+      "id": "pg-04",
+      "region": "Oceania",
+      "country": "Papua New Guinea",
+      "city": "Port Moresby",
+      "ip": "5.108.21.207",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 2532,
+      "status": "active",
+      "coordinates": {
+        "latitude": -9.4438,
+        "longitude": 147.1803
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/pg-04.crt",
+      "private_key": "keys/pg-04.key"
+    },
+    {
+      "id": "ws-73",
+      "region": "Oceania",
+      "country": "Samoa",
+      "city": "Apia",
+      "ip": "186.23.72.87",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 3320,
+      "status": "active",
+      "coordinates": {
+        "latitude": -13.8506,
+        "longitude": -171.7513
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": false,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/ws-73.crt",
+      "private_key": "keys/ws-73.key"
+    },
+    {
+      "id": "sb-69",
+      "region": "Oceania",
+      "country": "Solomon Islands",
+      "city": "Honiara",
+      "ip": "190.45.167.207",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 4402,
+      "status": "active",
+      "coordinates": {
+        "latitude": -9.4456,
+        "longitude": 159.9728
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/sb-69.crt",
+      "private_key": "keys/sb-69.key"
+    },
+    {
+      "id": "to-21",
+      "region": "Oceania",
+      "country": "Tonga",
+      "city": "Nuku'alofa",
+      "ip": "158.91.239.185",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2"
+      ],
+      "bandwidth": 4693,
+      "status": "active",
+      "coordinates": {
+        "latitude": -21.1394,
+        "longitude": -175.2046
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/to-21.crt",
+      "private_key": "keys/to-21.key"
+    },
+    {
+      "id": "tv-28",
+      "region": "Oceania",
+      "country": "Tuvalu",
+      "city": "Funafuti",
+      "ip": "176.239.174.46",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 3351,
+      "status": "active",
+      "coordinates": {
+        "latitude": -8.5211,
+        "longitude": 179.1961
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": false,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/tv-28.crt",
+      "private_key": "keys/tv-28.key"
+    },
+    {
+      "id": "vu-71",
+      "region": "Oceania",
+      "country": "Vanuatu",
+      "city": "Port Vila",
+      "ip": "194.87.199.116",
+      "protocols": [
+        "wireguard",
+        "openvpn"
+      ],
+      "bandwidth": 4329,
+      "status": "active",
+      "coordinates": {
+        "latitude": -17.7334,
+        "longitude": 168.322
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/vu-71.crt",
+      "private_key": "keys/vu-71.key"
+    },
+    {
+      "id": "gy-43",
+      "region": "South America",
+      "country": "Guyana",
+      "city": "Georgetown",
+      "ip": "180.207.64.7",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 3649,
+      "status": "active",
+      "coordinates": {
+        "latitude": 6.8013,
+        "longitude": -58.1553
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": false
+      },
+      "ssl_certificate": "certs/gy-43.crt",
+      "private_key": "keys/gy-43.key"
+    },
+    {
+      "id": "sr-55",
+      "region": "South America",
+      "country": "Suriname",
+      "city": "Paramaribo",
+      "ip": "85.53.146.84",
+      "protocols": [
+        "wireguard",
+        "openvpn",
+        "ikev2",
+        "stealth"
+      ],
+      "bandwidth": 3793,
+      "status": "active",
+      "coordinates": {
+        "latitude": 5.852,
+        "longitude": -55.2038
+      },
+      "capabilities": {
+        "multi_hop": false,
+        "obfuscation": true,
+        "streaming": true,
+        "p2p": true
+      },
+      "ssl_certificate": "certs/sr-55.crt",
+      "private_key": "keys/sr-55.key"
+    }
+  ],
+  "multi_hop_routes": [
+    {
+      "id": "secure-route-1",
+      "name": "Secure Europe Route",
+      "hops": [
+        "fr-01",
+        "de-01",
+        "uk-01"
+      ],
+      "latency": 120,
+      "bandwidth": 5000,
+      "security_level": "maximum"
+    },
+    {
+      "id": "secure-route-2",
+      "name": "Global Secure Route",
+      "hops": [
+        "us-01",
+        "ca-01",
+        "de-01"
+      ],
+      "latency": 180,
+      "bandwidth": 3000,
+      "security_level": "maximum"
+    },
+    {
+      "id": "asia-route",
+      "name": "Asia Optimized",
+      "hops": [
+        "sg-01",
+        "jp-01"
+      ],
+      "latency": 100,
+      "bandwidth": 4000,
+      "security_level": "high"
+    }
+  ],
+  "settings": {
+    "rotation_interval": 1800,
+    "auto_connect": true,
+    "default_protocol": "wireguard",
+    "dns": {
+      "primary": "1.1.1.1",
+      "secondary": "9.9.9.9",
+      "use_doh": true,
+      "doh_server": "https://cloudflare-dns.com/dns-query"
+    },
+    "leak_protection": {
+      "kill_switch": true,
+      "dns_leak_protection": true,
+      "webrtc_leak_protection": true,
+      "ipv6_leak_protection": true
+    }
+  }
+}

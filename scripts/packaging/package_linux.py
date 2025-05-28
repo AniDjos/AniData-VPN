@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # AniData VPN - Linux Packaging Script
-# © 2023-2024 AniData - All Rights Reserved
+# © 2023-2025-2024 AniData - All Rights Reserved
 
 import os
 import sys
@@ -100,7 +100,7 @@ def get_app_info():
         "author": "AniData",
         "author_email": "contact@anidata-vpn.com",
         "company": "AniData Inc.",
-        "copyright": "© 2023-2024 AniData",
+        "copyright": "© 2023-2025-2024 AniData",
         "website": "https://anidata-vpn.com",
         "license": "Proprietary",
         "categories": ["Network", "Security", "VPN"],
@@ -286,7 +286,7 @@ def build_linux_executable(app_info, icon_path):
 def create_deb_package(app_info, executable_path, icon_path):
     """Create a Debian package (.deb)"""
     package_name = app_info["package_name"]
-    version = app_info["version"]
+    version = "1.0.0"
     
     # Create directory structure
     deb_root = f"dist/{package_name}-{version}"
@@ -404,7 +404,7 @@ exit 0
 def create_rpm_package(app_info, executable_path, icon_path):
     """Create an RPM package"""
     package_name = app_info["package_name"]
-    version = app_info["version"]
+    version = "1.0.0"
     
     # Create RPM spec file
     spec_content = f"""Summary: {app_info['description']}
@@ -516,7 +516,7 @@ fi
 def create_appimage(app_info, executable_path, icon_path):
     """Create an AppImage package"""
     package_name = app_info["package_name"]
-    version = app_info["version"]
+    version = "1.0.0"
     
     # Create AppDir structure
     appdir = f"dist/AppDir"

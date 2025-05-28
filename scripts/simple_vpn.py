@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # AniData VPN - Ultra Simple UI
-# © 2023 AniData - All Rights Reserved
+# © 2023-2025 AniData - All Rights Reserved
 
 import os
 import sys
@@ -16,7 +16,8 @@ from PIL import Image, ImageTk, ImageDraw
 # Répertoire des configurations
 HOME_DIR = os.path.expanduser("~/.anidata")
 CONFIG_DIR = os.path.join(HOME_DIR, "config")
-SERVERS_FILE = os.path.join(HOME_DIR, "servers/config.json")
+SERVERS_FILE = os.path.join(HOME_DIR, "servers/expanded_config.json")
+EXTENDED_SERVERS = True  # Flag indiquant que nous utilisons la configuration étendue
 
 # Assurez-vous que les répertoires existent
 os.makedirs(os.path.join(HOME_DIR, "config"), exist_ok=True)
@@ -28,9 +29,16 @@ def check_server_config():
         # Essayer de le copier depuis le répertoire du projet
         try:
             project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-            src_file = os.path.join(project_root, "infrastructure/servers/config.json")
+            # Chercher d'abord la configuration étendue
+            src_file = os.path.join(project_root, "infrastructure/servers/expanded_config.json")
+            if not os.path.exists(src_file):
+                src_file = os.path.join(project_root, "infrastructure/servers/config_expanded.json")
+            if not os.path.exists(src_file):
+                src_file = os.path.join(project_root, "infrastructure/servers/config.json")
+            
             if os.path.exists(src_file):
                 import shutil
+                print(f"Utilisation du fichier de configuration: {src_file}")
                 shutil.copy2(src_file, SERVERS_FILE)
             else:
                 # Créer une configuration minimale
@@ -107,9 +115,9 @@ def simulate_vpn_disconnection():
 class SimpleVPNApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("AniData VPN")
-        self.root.geometry("700x500")
-        self.root.minsize(600, 400)
+        self.root.title("AniData VPN - Édition 163 Pays")
+        self.root.geometry("800x600")
+        self.root.minsize(700, 500)
         
         # Définir l'icône de l'application si disponible
         try:
@@ -472,7 +480,7 @@ class SimpleVPNApp:
         footer_frame.pack(fill=tk.X, side=tk.BOTTOM, padx=10, pady=5)
         footer_label = tk.Label(
             footer_frame, 
-            text="© 2023 AniData - Tous droits réservés", 
+            text="© 2023-2025 AniData - Tous droits réservés", 
             fg=self.colors["primary"],
             bg=self.colors["white"],
             font=("Helvetica", 8)

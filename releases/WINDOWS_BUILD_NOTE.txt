@@ -1,0 +1,5 @@
+Pour générer un installateur Windows pour AniData VPN v1.0.0:
+
+1. Clonez ce dépôt sur une machine Windows
+2. Exécutez: python scripts/package_windows.py
+3. L'installateur sera généré dans le dossier dist/

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # AniData VPN - Windows Packaging Script
-# © 2023-2024 AniData - All Rights Reserved
+# © 2023-2025-2024 AniData - All Rights Reserved
 
 import os
 import sys
@@ -89,7 +89,7 @@ def get_app_info():
         "description": "Ultra-secure next-generation VPN with global coverage",
         "author": "AniData",
         "company": "AniData Inc.",
-        "copyright": "© 2023-2024 AniData",
+        "copyright": "© 2023-2025-2024 AniData",
         "guid": "{E8CF1A5F-ECF2-4B70-B017-A0AC6B42A545}",  # Unique app identifier
         "website": "https://anidata-vpn.com",
     }
@@ -139,7 +139,7 @@ def get_icon_path():
 
 def generate_inno_setup_script(app_info, dist_dir, icon_path):
     app_name = app_info["name"]
-    app_version = app_info["version"]
+    app_version = "1.0.0"
     app_exe = f"{app_name.replace(' ', '')}.exe"
     app_guid = app_info.get("guid", "{E8CF1A5F-ECF2-4B70-B017-A0AC6B42A545}")
     app_website = app_info.get("website", "https://anidata-vpn.com")
@@ -525,7 +525,7 @@ def create_windows_installer(dist_dir):
 
     try:
         subprocess.run([inno_path, script_path], check=True)
-        print(f"Installer created: {app_info['name'].replace(' ', '')}_{app_info['version']}_Setup.exe")
+        print(f"Installer created: "1.0.0",
     except Exception as e:
         print(f"Error creating installer: {e}")
 

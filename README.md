@@ -100,7 +100,7 @@ La documentation complète est disponible dans le répertoire `docs/`. Pour plus
 
 ## 📝 Licence
 
-Propriétaire - Tous droits réservés © 2023-2024
+Propriétaire - Tous droits réservés © 2023-2025-2024
 
 ## 📞 Contact
 
