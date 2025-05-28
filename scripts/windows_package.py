@@ -9,6 +9,7 @@ import shutil
 import subprocess
 import platform
 import winreg
+import json
 from pathlib import Path
 import ctypes
 
@@ -38,11 +39,6 @@ def check_requirements():
     except ImportError:
         print("Installing pywin32...")
         subprocess.check_call([sys.executable, "-m", "pip", "install", "pywin32"])
-        # Force post-install script to run to register COM components
-        print("Running pywin32 post-install script...")
-        pywin32_path = os.path.join(sys.prefix, "Scripts", "pywin32_postinstall.py")
-        if os.path.exists(pywin32_path):
-            subprocess.check_call([sys.executable, pywin32_path, "-install"])
 
     # Check if running as admin
     if not ctypes.windll.shell32.IsUserAnAdmin():
@@ -67,19 +63,6 @@ def check_requirements():
             print("Please install it manually from https://jrsoftware.org/isinfo.php")
     else:
         print("Inno Setup is installed.")
-        
-    # Check for TAP-Windows driver
-    try:
-        import win32com.shell.shell as shell
-        print("Checking for TAP-Windows virtual network adapter...")
-        result = subprocess.run(["netsh", "interface", "show", "interface", "name=TAP-Windows"], 
-                               capture_output=True, text=True)
-        if "TAP-Windows" not in result.stdout:
-            print("TAP-Windows adapter not found. Will be installed during setup.")
-        else:
-            print("TAP-Windows adapter is installed.")
-    except Exception as e:
-        print(f"Could not check TAP-Windows adapter: {e}")
 
 def get_app_info():
     return {
@@ -139,7 +122,7 @@ def get_icon_path():
 
 def generate_inno_setup_script(app_info, dist_dir, icon_path):
     app_name = app_info["name"]
-    app_version = "1.0.0"
+    app_version = app_info["version"]
     app_exe = f"{app_name.replace(' ', '')}.exe"
     app_guid = app_info.get("guid", "{E8CF1A5F-ECF2-4B70-B017-A0AC6B42A545}")
     app_website = app_info.get("website", "https://anidata-vpn.com")
@@ -243,8 +226,81 @@ end;
         f.write(script_content.strip())
     return str(script_path)
 
+def prepare_extended_server_config(project_root):
+    """Ensure we have the extended server configuration with 163 countries"""
+    print("Preparing extended server configuration with 163 countries...")
+    
+    config_dir = project_root / "infrastructure" / "servers"
+    expanded_config = config_dir / "new_expanded_config.json"
+    
+    if not expanded_config.exists():
+        print("Extended configuration not found, generating it...")
+        try:
+            # Run the update_servers.py script to generate the extended configuration
+            update_script = project_root / "scripts" / "update_servers.py"
+            config_file = config_dir / "config.json"
+            
+            if update_script.exists() and config_file.exists():
+                cmd = [
+                    sys.executable,
+                    str(update_script),
+                    "-i", str(config_file),
+                    "-o", str(expanded_config)
+                ]
+                subprocess.run(cmd, check=True)
+                print("Extended server configuration generated successfully.")
+            else:
+                print("Update script or original config not found.")
+                # Create a fallback expanded config by modifying the original
+                if config_file.exists():
+                    try:
+                        with open(config_file, 'r', encoding='utf-8') as f:
+                            config = json.load(f)
+                        
+                        # Add a note that this is the extended version
+                        if 'settings' in config:
+                            config['settings']['extended_version'] = True
+                            config['settings']['countries_count'] = len(config.get('servers', []))
+                        
+                        with open(expanded_config, 'w', encoding='utf-8') as f:
+                            json.dump(config, f, indent=2)
+                        
+                        print(f"Created fallback expanded config at {expanded_config}")
+                    except Exception as e:
+                        print(f"Error creating fallback config: {e}")
+        except Exception as e:
+            print(f"Error generating extended configuration: {e}")
+    else:
+        print("Extended server configuration already exists.")
+    
+    # Ensure the simple_vpn.py script uses the extended config
+    try:
+        vpn_script = project_root / "scripts" / "simple_vpn.py"
+        if vpn_script.exists():
+            with open(vpn_script, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # Check if we need to modify the script
+            if 'SERVERS_FILE = os.path.join(HOME_DIR, "servers/config.json")' in content:
+                content = content.replace(
+                    'SERVERS_FILE = os.path.join(HOME_DIR, "servers/config.json")',
+                    'SERVERS_FILE = os.path.join(HOME_DIR, "servers/expanded_config.json")'
+                )
+                content = content.replace(
+                    'self.root.title("AniData VPN")',
+                    'self.root.title("AniData VPN - Édition 163 Pays")'
+                )
+                
+                with open(vpn_script, 'w', encoding='utf-8') as f:
+                    f.write(content)
+                
+                print("Updated simple_vpn.py to use extended configuration.")
+    except Exception as e:
+        print(f"Error updating VPN script: {e}")
+
 def create_service_stub():
-    service_code = r"""
+    """Create a Windows service stub for VPN background operation"""
+    service_code = """
 import os
 import sys
 import json
@@ -283,7 +339,7 @@ class AniDataVPNService(win32serviceutil.ServiceFramework):
         # Find installation directory
         try:
             with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, 
-                               r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{E8CF1A5F-ECF2-4B70-B017-A0AC6B42A545}_is1") as key:
+                               r"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{E8CF1A5F-ECF2-4B70-B017-A0AC6B42A545}_is1") as key:
                 self.install_dir = winreg.QueryValueEx(key, "InstallLocation")[0]
         except:
             # Default fallback location
@@ -392,126 +448,49 @@ if __name__ == '__main__':
         f.write(service_code.strip())
     return service_path
 
-def create_vpn_integration_module():
-    """Create module for VPN system integration"""
-    vpn_integration_code = r"""
-import os
-import sys
-import ctypes
-import winreg
-import socket
-import logging
-import subprocess
-import json
-from pathlib import Path
+def build_windows_executable(app_info, icon_path):
+    """Build Windows executable using PyInstaller"""
+    entry_point = app_info["entry_point"]
+    app_name = app_info["name"].replace(" ", "")
+    project_root = Path(__file__).resolve().parent.parent
 
-def is_admin():
-    """Check if the script is running with admin privileges"""
-    try:
-        return ctypes.windll.shell32.IsUserAnAdmin()
-    except:
-        return False
+    dist_dir = project_root / "dist"
+    build_dir = project_root / "build"
+    spec_file = project_root / f"{app_name}.spec"
 
-def register_vpn_with_windows():
-    """Register the VPN as a recognized network connection in Windows"""
-    if not is_admin():
-        logging.error("Admin privileges required to register VPN")
-        return False
-        
-    try:
-        # Register as a network provider
-        key_path = r"SYSTEM\CurrentControlSet\Control\NetworkProvider\Order"
-        with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, key_path, 0, winreg.KEY_READ | winreg.KEY_WRITE) as key:
-            providers = winreg.QueryValueEx(key, "ProviderOrder")[0]
-            if "AniDataVPN" not in providers:
-                providers = providers + ",AniDataVPN"
-                winreg.SetValueEx(key, "ProviderOrder", 0, winreg.REG_SZ, providers)
-                
-        # Create network provider key
-        provider_key = r"SYSTEM\CurrentControlSet\Services\AniDataVPN\NetworkProvider"
-        with winreg.CreateKeyEx(winreg.HKEY_LOCAL_MACHINE, provider_key, 0, winreg.KEY_WRITE) as key:
-            winreg.SetValueEx(key, "Name", 0, winreg.REG_SZ, "AniData VPN")
-            winreg.SetValueEx(key, "Class", 0, winreg.REG_DWORD, 2)  # VPN class
-            
-        # Register with network connections UI
-        connection_key = r"SYSTEM\CurrentControlSet\Control\Network\{4D36E972-E325-11CE-BFC1-08002BE10318}"
-        with winreg.CreateKeyEx(winreg.HKEY_LOCAL_MACHINE, connection_key, 0, winreg.KEY_WRITE) as key:
-            pass  # The real implementation would create the necessary structure
-            
-        return True
-    except Exception as e:
-        logging.error(f"Error registering VPN with Windows: {e}")
-        return False
+    if dist_dir.exists():
+        shutil.rmtree(dist_dir)
+    if build_dir.exists():
+        shutil.rmtree(build_dir)
+    if spec_file.exists():
+        os.remove(spec_file)
 
-def install_tap_driver():
-    """Install the TAP virtual network adapter driver"""
-    if not is_admin():
-        logging.error("Admin privileges required to install TAP driver")
-        return False
-        
-    try:
-        # Get the path to the TAP installer
-        app_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
-        tap_installer = os.path.join(app_dir, "drivers", "tap-windows.exe")
-        
-        if not os.path.exists(tap_installer):
-            logging.error(f"TAP installer not found at {tap_installer}")
-            return False
-            
-        # Install the TAP driver silently
-        subprocess.run([tap_installer, "/S"], check=True)
-        return True
-    except Exception as e:
-        logging.error(f"Error installing TAP driver: {e}")
-        return False
+    # Ensure we use the extended server configuration
+    prepare_extended_server_config(project_root)
 
-def create_vpn_connection(name="AniData VPN", server="auto"):
-    """Create a VPN connection in Windows"""
-    try:
-        # In a real implementation, this would use the Windows networking APIs
-        # to create a recognized VPN connection
-        
-        # For now, we'll just create a settings file
-        app_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
-        connections_dir = os.path.join(os.environ.get('APPDATA', ''), 'AniData VPN', 'Connections')
-        os.makedirs(connections_dir, exist_ok=True)
-        
-        connection = {
-            "name": name,
-            "server": server,
-            "protocol": "wireguard",
-            "auto_connect": False,
-            "created_at": "2023-04-01T12:00:00Z"
-        }
-        
-        with open(os.path.join(connections_dir, f"{name}.json"), 'w') as f:
-            json.dump(connection, f, indent=2)
-            
-        return True
-    except Exception as e:
-        logging.error(f"Error creating VPN connection: {e}")
-        return False
+    # Ensure entry point is a full path
+    entry_point_path = project_root / entry_point
+    if not entry_point_path.exists():
+        print(f"Error: Entry point {entry_point_path} not found")
+        sys.exit(1)
 
-if __name__ == "__main__":
-    if len(sys.argv) > 1 and sys.argv[1] == "--register-vpn":
-        if is_admin():
-            success = register_vpn_with_windows()
-            sys.exit(0 if success else 1)
-        else:
-            # Re-run the script with admin privileges
-            ctypes.windll.shell32.ShellExecuteW(
-                None, "runas", sys.executable, " ".join(sys.argv), None, 1
-            )
-    elif len(sys.argv) > 1 and sys.argv[1] == "--install-tap":
-        if is_admin():
-            success = install_tap_driver()
-            sys.exit(0 if success else 1)
-        else:
-            ctypes.windll.shell32.ShellExecuteW(
-                None, "runas", sys.executable, " ".join(sys.argv), None, 1
-            )
+    cmd = [
+        "pyinstaller",
+        "--onefile",
+        "--noconsole",
+        f"--icon={icon_path}",
+        "--name", app_name,
+        f"--add-data={project_root}\\ui\\assets;ui/assets",
+        f"--add-data={project_root}\\infrastructure;infrastructure",
+        str(entry_point_path)
+    ]
+
+    subprocess.run(cmd, check=True)
+
+    return dist_dir
 
 def create_windows_installer(dist_dir):
+    """Create Windows installer using Inno Setup"""
     print("Creating Windows installer...")
     app_info = get_app_info()
     icon_path = get_icon_path()
@@ -525,87 +504,14 @@ def create_windows_installer(dist_dir):
 
     try:
         subprocess.run([inno_path, script_path], check=True)
-        print(f"Installer created: "1.0.0",
+        print(f"Installer created: {app_info['name'].replace(' ', '')}_{app_info['version']}_Setup.exe")
     except Exception as e:
         print(f"Error creating installer: {e}")
 
-def prepare_extended_server_config(project_root):
-    """Ensure we have the extended server configuration with 163 countries"""
-    print("Preparing extended server configuration with 163 countries...")
-    
-    config_dir = project_root / "infrastructure" / "servers"
-    expanded_config = config_dir / "new_expanded_config.json"
-    
-    if not expanded_config.exists():
-        print("Extended configuration not found, generating it...")
-        try:
-            import json
-            import sys
-            import subprocess
-            
-            # Run the update_servers.py script to generate the extended configuration
-            update_script = project_root / "scripts" / "update_servers.py"
-            config_file = config_dir / "config.json"
-            
-            if update_script.exists() and config_file.exists():
-                cmd = [
-                    sys.executable,
-                    str(update_script),
-                    "-i", str(config_file),
-                    "-o", str(expanded_config)
-                ]
-                subprocess.run(cmd, check=True)
-                print("Extended server configuration generated successfully.")
-            else:
-                print("Update script or original config not found.")
-                # Create a fallback expanded config by modifying the original
-                if config_file.exists():
-                    try:
-                        with open(config_file, 'r', encoding='utf-8') as f:
-                            config = json.load(f)
-                        
-                        # Add a note that this is the extended version
-                        if 'settings' in config:
-                            config['settings']['extended_version'] = True
-                            config['settings']['countries_count'] = len(config.get('servers', []))
-                        
-                        with open(expanded_config, 'w', encoding='utf-8') as f:
-                            json.dump(config, f, indent=2)
-                        
-                        print(f"Created fallback expanded config at {expanded_config}")
-                    except Exception as e:
-                        print(f"Error creating fallback config: {e}")
-        except Exception as e:
-            print(f"Error generating extended configuration: {e}")
-    else:
-        print("Extended server configuration already exists.")
-    
-    # Ensure the simple_vpn.py script uses the extended config
-    try:
-        vpn_script = project_root / "scripts" / "simple_vpn.py"
-        if vpn_script.exists():
-            with open(vpn_script, 'r', encoding='utf-8') as f:
-                content = f.read()
-            
-            # Check if we need to modify the script
-            if 'SERVERS_FILE = os.path.join(HOME_DIR, "servers/config.json")' in content:
-                content = content.replace(
-                    'SERVERS_FILE = os.path.join(HOME_DIR, "servers/config.json")',
-                    'SERVERS_FILE = os.path.join(HOME_DIR, "servers/expanded_config.json")'
-                )
-                content = content.replace(
-                    'self.root.title("AniData VPN")',
-                    'self.root.title("AniData VPN - Édition 163 Pays")'
-                )
-                
-                with open(vpn_script, 'w', encoding='utf-8') as f:
-                    f.write(content)
-                
-                print("Updated simple_vpn.py to use extended configuration.")
-    except Exception as e:
-        print(f"Error updating VPN script: {e}")
-
 def main():
+    """Main function for the Windows packaging script"""
+    print("AniData VPN - Windows Packaging Script (163 Countries Edition)")
+    
     if platform.system() != "Windows":
         print("This packaging script is intended for Windows only.")
         print("However, we'll prepare the files for Windows packaging.")
