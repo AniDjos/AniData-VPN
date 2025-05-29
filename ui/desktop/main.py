@@ -17,19 +17,19 @@ from typing import Dict, List, Optional
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 try:
-    from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
+    from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
                                 QHBoxLayout, QPushButton, QLabel, QComboBox,
                                 QTabWidget, QFrame, QSplitter, QProgressBar,
                                 QSystemTrayIcon, QMenu, QAction, QMessageBox,
                                 QCheckBox, QGroupBox, QFormLayout, QLineEdit,
                                 QToolButton, QStackedWidget, QTableWidget,
                                 QTableWidgetItem, QHeaderView)
-    from PyQt5.QtGui import QIcon, QPixmap, QFont, QColor, QPainter, QPen
-    from PyQt5.QtCore import Qt, QSize, QTimer, pyqtSignal, QThread, QSettings, QUrl
-    from PyQt5.QtWebEngineWidgets import QWebEngineView
+    from PySide6.QtGui import QIcon, QPixmap, QFont, QColor, QPainter, QPen
+    from PySide6.QtCore import Qt, QSize, QTimer, Signal, QThread, QSettings, QUrl
+    from PySide6.QtWebEngineWidgets import QWebEngineView
 except ImportError:
-    print("ERROR: PyQt5 and PyQtWebEngine are required. Install with:")
-    print("pip install PyQt5 PyQtWebEngine")
+    print("ERROR: PySide6 is required. Install with:")
+    print("pip install PySide6")
     sys.exit(1)
 
 # Attempt to import core modules
@@ -196,7 +196,7 @@ DEFAULT_SETTINGS = {
 
 class VPNStatusThread(QThread):
     """Thread for monitoring VPN connection status"""
-    status_updated = pyqtSignal(dict)
+    status_updated = Signal(dict)
     
     def __init__(self, manager):
         super().__init__()
@@ -268,7 +268,7 @@ import random
 class ServerListWidget(QWidget):
     """Widget for displaying and selecting VPN servers"""
     
-    server_selected = pyqtSignal(dict)
+    server_selected = Signal(dict)
     
     def __init__(self, servers, parent=None):
         super().__init__(parent)
@@ -360,8 +360,8 @@ class ServerListWidget(QWidget):
 class ConnectionWidget(QWidget):
     """Widget for connecting to VPN servers"""
     
-    connect_clicked = pyqtSignal()
-    disconnect_clicked = pyqtSignal()
+    connect_clicked = Signal()
+    disconnect_clicked = Signal()
     
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -642,7 +642,7 @@ class StatisticsWidget(QWidget):
 class SettingsWidget(QWidget):
     """Widget for configuring VPN settings"""
     
-    settings_changed = pyqtSignal(dict)
+    settings_changed = Signal(dict)
     
     def __init__(self, settings=None, parent=None):
         super().__init__(parent)

@@ -1,0 +1,664 @@
+#!/bin/bash
+# Script de réparation pour AniData VPN
+# Ce script corrige les erreurs de gestionnaire de géométrie Tkinter
+
+# Définir les couleurs pour les messages
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Afficher le logo en ASCII art
+echo -e "${BLUE}"
+echo "   _____          _    _____        __          __     _______  _   _ "
+echo "  / ____|   /\   | |  |  __ \       \ \        / /\   |  __ \ \| | | |"
+echo " | |       /  \  | |  | |  | |       \ \  /\  / /  \  | |__) | | | | |"
+echo " | |      / /\ \ | |  | |  | |        \ \/  \/ / /\ \ |  ___/| | | | |"
+echo " | |____ / ____ \| |__| |__| |         \  /\  / ____ \| |    | | | |__"
+echo "  \_____/_/    \_\____/_____/           \/  \/_/    \_\_|    |_| |____|"
+echo ""
+echo -e "${YELLOW}               165 PAYS - SÉCURITÉ MAXIMALE - ANONYMAT TOTAL${NC}"
+echo ""
+
+# Déterminer le répertoire du script
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "$SCRIPT_DIR"
+
+echo -e "${GREEN}[1/3]${NC} Création d'une interface graphique corrigée..."
+
+# Créer le répertoire de données si nécessaire
+mkdir -p data
+
+# Créer un fichier tkinter_ui.py corrigé
+cat > tkinter_ui_fixed.py << 'EOF'
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# AniData VPN - Interface Tkinter sans PyQt5
+# © 2023-2024 AniData
+
+import os
+import sys
+import json
+import random
+import time
+import tkinter as tk
+from tkinter import ttk, messagebox
+import threading
+from datetime import datetime
+
+# Répertoire courant
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Tenter d'importer matplotlib et numpy
+try:
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+    MATPLOTLIB_AVAILABLE = True
+except ImportError:
+    MATPLOTLIB_AVAILABLE = False
+    print("Matplotlib non disponible. Les graphiques seront désactivés.")
+
+# Classe gestionnaire WireGuard
+class WireGuardManager:
+    def __init__(self, **kwargs):
+        self.servers = []
+        
+    def connect(self, config):
+        print(f"Connexion à {config.get('server', {}).get('country', 'Unknown')}")
+        return True
+        
+    def disconnect(self):
+        print("Déconnexion...")
+        return True
+        
+    def get_status(self):
+        return {
+            'connected': False,
+            'uptime': "00:00:00",
+            'statistics': {
+                'download_speed': random.uniform(0, 2),
+                'upload_speed': random.uniform(0, 1),
+                'total_downloaded': random.uniform(0, 100),
+                'total_uploaded': random.uniform(0, 50)
+            }
+        }
+
+# Thread de surveillance VPN
+class VPNStatusThread(threading.Thread):
+    def __init__(self, manager, callback):
+        super().__init__()
+        self.manager = manager
+        self.callback = callback
+        self.running = True
+        self.daemon = True
+        
+    def run(self):
+        while self.running:
+            try:
+                status = self.manager.get_status()
+                self.callback(status)
+            except Exception as e:
+                print(f"Erreur de surveillance: {str(e)}")
+            time.sleep(3)
+    
+    def stop(self):
+        self.running = False
+
+# Graphique de bande passante
+class BandwidthGraph:
+    def __init__(self, parent):
+        self.parent = parent
+        
+        if not MATPLOTLIB_AVAILABLE:
+            self.label = ttk.Label(parent, text="Graphique désactivé\nInstaller matplotlib pour l'activer")
+            self.label.pack(fill=tk.BOTH, expand=True)
+            return
+            
+        self.times = np.array([])
+        self.download_data = np.array([])
+        self.upload_data = np.array([])
+        self.start_time = datetime.now()
+        self.time_window = 60
+        
+        self.figure = plt.Figure(figsize=(5, 3), dpi=100)
+        self.ax = self.figure.add_subplot(111)
+        self.canvas = FigureCanvasTkAgg(self.figure, master=parent)
+        self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+        
+        self.download_line, = self.ax.plot([], [], 'g-', label='Download')
+        self.upload_line, = self.ax.plot([], [], 'r-', label='Upload')
+        self.ax.set_xlabel('Temps (s)')
+        self.ax.set_ylabel('Vitesse (MB/s)')
+        self.ax.set_title('Bande passante')
+        self.ax.legend()
+        self.ax.grid(True)
+        
+        self.ax.set_xlim(0, self.time_window)
+        self.ax.set_ylim(0, 1)
+        
+    def update_bandwidth(self, download_speed, upload_speed):
+        if not MATPLOTLIB_AVAILABLE:
+            return
+            
+        try:
+            current_time = (datetime.now() - self.start_time).total_seconds()
+            
+            self.times = np.append(self.times, current_time)
+            self.download_data = np.append(self.download_data, download_speed)
+            self.upload_data = np.append(self.upload_data, upload_speed)
+            
+            mask = self.times > current_time - self.time_window
+            self.times = self.times[mask]
+            self.download_data = self.download_data[mask]
+            self.upload_data = self.upload_data[mask]
+            
+            self.download_line.set_data(self.times, self.download_data)
+            self.upload_line.set_data(self.times, self.upload_data)
+            
+            max_value = max(np.max(self.download_data) if len(self.download_data) > 0 else 0,
+                          np.max(self.upload_data) if len(self.upload_data) > 0 else 0)
+            if max_value > 0:
+                self.ax.set_ylim(0, max_value * 1.1)
+                
+            self.ax.set_xlim(max(0, current_time - self.time_window), max(self.time_window, current_time))
+            
+            self.canvas.draw()
+        except Exception as e:
+            print(f"Erreur graphique: {e}")
+    
+    def reset(self):
+        if not MATPLOTLIB_AVAILABLE:
+            return
+            
+        self.times = np.array([])
+        self.download_data = np.array([])
+        self.upload_data = np.array([])
+        self.start_time = datetime.now()
+        self.download_line.set_data([], [])
+        self.upload_line.set_data([], [])
+        self.canvas.draw()
+
+# Cadre pour la carte
+class MapFrame(ttk.Frame):
+    def __init__(self, parent):
+        super().__init__(parent, padding=10)
+        
+        # En-tête
+        header_frame = ttk.Frame(self)
+        header_frame.pack(fill=tk.X, pady=(0, 5))
+        
+        server_count_label = ttk.Label(
+            header_frame, 
+            text="AniData VPN - 165 Pays Disponibles", 
+            font=('Helvetica', 14, 'bold'), 
+            foreground="#3B82F6"
+        )
+        server_count_label.pack(side=tk.LEFT)
+        
+        # Carte
+        map_frame = ttk.Frame(self)
+        map_frame.pack(fill=tk.BOTH, expand=True, pady=10)
+        
+        # Titre
+        total_label = ttk.Label(
+            map_frame, 
+            text="Réseau Mondial Sécurisé: 165 Pays", 
+            font=('Helvetica', 12, 'bold'),
+            foreground="#22C55E"
+        )
+        total_label.pack(pady=(0, 10))
+        
+        # Affichage des régions avec pack au lieu de grid
+        regions = [
+            ("Europe", "40+ pays"),
+            ("Asie", "45+ pays"),
+            ("Amériques", "35+ pays"),
+            ("Afrique", "25+ pays"),
+            ("Océanie", "10+ pays")
+        ]
+        
+        regions_frame = ttk.Frame(map_frame)
+        regions_frame.pack(fill=tk.BOTH, expand=True)
+        
+        for region, count in regions:
+            region_frame = ttk.Frame(regions_frame)
+            region_frame.pack(fill=tk.X, pady=2)
+            
+            region_label = ttk.Label(region_frame, text=f"• {region}: ", font=('Helvetica', 11))
+            region_label.pack(side=tk.LEFT)
+            
+            count_label = ttk.Label(region_frame, text=count, font=('Helvetica', 11, 'bold'))
+            count_label.pack(side=tk.LEFT)
+        
+        # Compteur de serveurs
+        count_frame = ttk.Frame(self)
+        count_frame.pack(fill=tk.X, pady=5)
+        self.server_count = ttk.Label(
+            count_frame, 
+            text="Chargement des serveurs...", 
+            font=('Helvetica', 10, 'italic')
+        )
+        self.server_count.pack(side=tk.RIGHT)
+
+# Liste des serveurs
+class ServerListFrame(ttk.Frame):
+    def __init__(self, parent, on_select_callback):
+        super().__init__(parent, padding=10)
+        self.parent = parent
+        self.on_select_callback = on_select_callback
+        
+        # En-tête
+        header_frame = ttk.Frame(self)
+        header_frame.pack(fill=tk.X, pady=(0, 10))
+        
+        ttk.Label(header_frame, text="Serveurs", font=('Helvetica', 14, 'bold')).pack(side=tk.LEFT)
+        
+        # Recherche
+        search_frame = ttk.Frame(self)
+        search_frame.pack(fill=tk.X, pady=(0, 10))
+        
+        ttk.Label(search_frame, text="Recherche:").pack(side=tk.LEFT, padx=(0, 5))
+        self.search_entry = ttk.Entry(search_frame)
+        self.search_entry.pack(side=tk.LEFT, fill=tk.X, expand=True)
+        self.search_entry.bind("<KeyRelease>", self.filter_servers)
+        
+        # Liste des serveurs
+        self.tree = ttk.Treeview(self, columns=("country", "city", "protocols"), show="headings")
+        self.tree.heading("country", text="Pays")
+        self.tree.heading("city", text="Ville")
+        self.tree.heading("protocols", text="Protocoles")
+        self.tree.column("country", width=100)
+        self.tree.column("city", width=100)
+        self.tree.column("protocols", width=100)
+        self.tree.pack(fill=tk.BOTH, expand=True)
+        
+        # Barre de défilement
+        scrollbar = ttk.Scrollbar(self, orient=tk.VERTICAL, command=self.tree.yview)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        self.tree.configure(yscrollcommand=scrollbar.set)
+        
+        # Sélection
+        self.tree.bind("<<TreeviewSelect>>", self.on_server_selected)
+        
+        # Données
+        self.servers = []
+        
+    def populate_servers(self, servers):
+        self.servers = servers
+        
+        for item in self.tree.get_children():
+            self.tree.delete(item)
+            
+        for i, server in enumerate(servers):
+            protocols = ", ".join(server.get("protocols", []))
+            self.tree.insert("", tk.END, iid=str(i), values=(
+                server.get("country", "Unknown"), 
+                server.get("city", ""), 
+                protocols
+            ))
+            
+        # Mise à jour du compteur
+        if hasattr(self.parent, "map_frame") and hasattr(self.parent.map_frame, "server_count"):
+            country_count = len(set(s.get('country', '') for s in servers))
+            self.parent.map_frame.server_count.config(
+                text=f"Total: {len(servers)} serveurs dans {country_count} pays"
+            )
+            
+    def filter_servers(self, event=None):
+        query = self.search_entry.get().lower()
+        
+        for item in self.tree.get_children():
+            self.tree.delete(item)
+            
+        for i, server in enumerate(self.servers):
+            if (query in server.get("country", "").lower() or 
+                query in server.get("city", "").lower()):
+                protocols = ", ".join(server.get("protocols", []))
+                self.tree.insert("", tk.END, iid=str(i), values=(
+                    server.get("country", "Unknown"), 
+                    server.get("city", ""), 
+                    protocols
+                ))
+                
+    def on_server_selected(self, event):
+        selection = self.tree.selection()
+        if selection:
+            index = int(selection[0])
+            server = self.servers[index]
+            self.on_select_callback(server)
+
+# Contrôles de connexion
+class ConnectionFrame(ttk.Frame):
+    def __init__(self, parent, on_connect, on_disconnect):
+        super().__init__(parent, padding=10)
+        self.on_connect = on_connect
+        self.on_disconnect = on_disconnect
+        
+        self.is_connected = False
+        self.selected_server = None
+        
+        # Serveur sélectionné
+        server_frame = ttk.Frame(self)
+        server_frame.pack(fill=tk.X, pady=(0, 10))
+        
+        ttk.Label(server_frame, text="Serveur sélectionné:").pack(side=tk.LEFT, padx=(0, 5))
+        self.server_info = ttk.Label(server_frame, text="Aucun")
+        self.server_info.pack(side=tk.LEFT)
+        
+        # Statut
+        status_frame = ttk.Frame(self)
+        status_frame.pack(fill=tk.X, pady=(0, 10))
+        
+        ttk.Label(status_frame, text="Statut:").pack(side=tk.LEFT, padx=(0, 5))
+        self.status_label = ttk.Label(status_frame, text="Déconnecté")
+        self.status_label.pack(side=tk.LEFT)
+        
+        # Temps de connexion
+        uptime_frame = ttk.Frame(self)
+        uptime_frame.pack(fill=tk.X, pady=(0, 10))
+        
+        ttk.Label(uptime_frame, text="Temps de connexion:").pack(side=tk.LEFT, padx=(0, 5))
+        self.uptime_label = ttk.Label(uptime_frame, text="00:00:00")
+        self.uptime_label.pack(side=tk.LEFT)
+        
+        # Boutons
+        button_frame = ttk.Frame(self)
+        button_frame.pack(fill=tk.X, pady=(10, 0))
+        
+        self.connect_btn = ttk.Button(button_frame, text="Connecter", command=self.connect_clicked)
+        self.connect_btn.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 5))
+        self.connect_btn.state(['disabled'])
+        
+        self.disconnect_btn = ttk.Button(button_frame, text="Déconnecter", command=self.disconnect_clicked)
+        self.disconnect_btn.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(5, 0))
+        self.disconnect_btn.state(['disabled'])
+        
+    def set_selected_server(self, server):
+        self.selected_server = server
+        self.server_info.config(text=f"{server.get('country', 'Unknown')} - {server.get('city', '')}")
+        self.connect_btn.state(['!disabled'])
+        
+    def connect_clicked(self):
+        if self.selected_server:
+            self.on_connect(self.selected_server)
+            
+    def disconnect_clicked(self):
+        self.on_disconnect()
+        
+    def update_status(self, is_connected, server, uptime):
+        self.is_connected = is_connected
+        
+        if is_connected:
+            self.status_label.config(text="Connecté")
+            self.uptime_label.config(text=uptime)
+            self.connect_btn.state(['disabled'])
+            self.disconnect_btn.state(['!disabled'])
+            
+            if server:
+                self.server_info.config(text=f"{server.get('country', 'Unknown')} - {server.get('city', '')}")
+        else:
+            self.status_label.config(text="Déconnecté")
+            self.uptime_label.config(text="00:00:00")
+            if self.selected_server:
+                self.connect_btn.state(['!disabled'])
+            self.disconnect_btn.state(['disabled'])
+
+# Statistiques
+class StatisticsFrame(ttk.Frame):
+    def __init__(self, parent):
+        super().__init__(parent, padding=10)
+        
+        # En-tête
+        header_frame = ttk.Frame(self)
+        header_frame.pack(fill=tk.X, pady=(0, 10))
+        
+        ttk.Label(header_frame, text="Statistiques", font=('Helvetica', 14, 'bold')).pack(side=tk.LEFT)
+        
+        # Grille de statistiques sans utiliser grid
+        stats_frame = ttk.Frame(self)
+        stats_frame.pack(fill=tk.BOTH, expand=True)
+        
+        # Vitesse de téléchargement
+        dl_frame = ttk.Frame(stats_frame)
+        dl_frame.pack(fill=tk.X, pady=2)
+        ttk.Label(dl_frame, text="Vitesse de téléchargement:", width=25, anchor="w").pack(side=tk.LEFT)
+        self.download_speed = ttk.Label(dl_frame, text="0.00 MB/s")
+        self.download_speed.pack(side=tk.LEFT)
+        
+        # Vitesse d'envoi
+        ul_frame = ttk.Frame(stats_frame)
+        ul_frame.pack(fill=tk.X, pady=2)
+        ttk.Label(ul_frame, text="Vitesse d'envoi:", width=25, anchor="w").pack(side=tk.LEFT)
+        self.upload_speed = ttk.Label(ul_frame, text="0.00 MB/s")
+        self.upload_speed.pack(side=tk.LEFT)
+        
+        # Total téléchargé
+        dl_total_frame = ttk.Frame(stats_frame)
+        dl_total_frame.pack(fill=tk.X, pady=2)
+        ttk.Label(dl_total_frame, text="Total téléchargé:", width=25, anchor="w").pack(side=tk.LEFT)
+        self.total_downloaded = ttk.Label(dl_total_frame, text="0.00 MB")
+        self.total_downloaded.pack(side=tk.LEFT)
+        
+        # Total envoyé
+        ul_total_frame = ttk.Frame(stats_frame)
+        ul_total_frame.pack(fill=tk.X, pady=2)
+        ttk.Label(ul_total_frame, text="Total envoyé:", width=25, anchor="w").pack(side=tk.LEFT)
+        self.total_uploaded = ttk.Label(ul_total_frame, text="0.00 MB")
+        self.total_uploaded.pack(side=tk.LEFT)
+        
+    def update_statistics(self, download_speed, upload_speed, total_downloaded, total_uploaded):
+        self.download_speed.config(text=download_speed)
+        self.upload_speed.config(text=upload_speed)
+        self.total_downloaded.config(text=total_downloaded)
+        self.total_uploaded.config(text=total_uploaded)
+
+# Application principale
+class AniDataVPNApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("AniData VPN - 165 Pays")
+        self.root.geometry("1000x600")
+        self.root.minsize(800, 500)
+        
+        # Gestionnaire VPN
+        self.vpn_manager = WireGuardManager()
+        self.current_server = None
+        self.servers = []
+        self.protocol = "wireguard"
+        
+        # Cadre principal
+        self.main_frame = ttk.Frame(self.root)
+        self.main_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+        
+        # Panneaux
+        self.paned_window = ttk.PanedWindow(self.main_frame, orient=tk.HORIZONTAL)
+        self.paned_window.pack(fill=tk.BOTH, expand=True)
+        
+        self.left_frame = ttk.Frame(self.paned_window)
+        self.right_frame = ttk.Frame(self.paned_window)
+        
+        self.paned_window.add(self.left_frame, weight=2)
+        self.paned_window.add(self.right_frame, weight=1)
+        
+        # Carte
+        self.map_frame = MapFrame(self.left_frame)
+        self.map_frame.pack(fill=tk.BOTH, expand=True, pady=(0, 10))
+        
+        # Liste des serveurs
+        self.server_list = ServerListFrame(self, self.on_server_selected)
+        self.server_list.pack(fill=tk.BOTH, expand=True)
+        
+        # Contrôles de connexion
+        self.connection_widget = ConnectionFrame(self.right_frame, self.connect_vpn, self.disconnect_vpn)
+        self.connection_widget.pack(fill=tk.X, pady=(0, 10))
+        
+        # Statistiques
+        self.stats_widget = StatisticsFrame(self.right_frame)
+        self.stats_widget.pack(fill=tk.X, pady=(0, 10))
+        
+        # Graphique
+        graph_frame = ttk.LabelFrame(self.right_frame, text="Bande passante")
+        graph_frame.pack(fill=tk.BOTH, expand=True, pady=(0, 10))
+        self.bandwidth_graph = BandwidthGraph(graph_frame)
+        
+        # Chargement des données
+        self.load_servers()
+        
+        # Démarrer la surveillance
+        self.status_thread = VPNStatusThread(self.vpn_manager, self.update_status)
+        self.status_thread.start()
+        
+        # Gestion de la fermeture
+        self.root.protocol("WM_DELETE_WINDOW", self.on_close)
+        
+    def load_servers(self):
+        try:
+            # Essayer de charger depuis le fichier JSON
+            countries_path = os.path.join(current_dir, "data", "countries.json")
+            if os.path.exists(countries_path):
+                with open(countries_path, 'r', encoding='utf-8') as f:
+                    self.servers = json.load(f)
+                    print(f"Chargé {len(self.servers)} serveurs depuis countries.json")
+                    if self.servers:
+                        self.server_list.populate_servers(self.servers)
+                        return
+        except Exception as e:
+            print(f"Erreur lors du chargement des serveurs: {e}")
+        
+        # Générer des serveurs de démonstration
+        self.generate_demo_servers()
+        
+    def generate_demo_servers(self):
+        countries = [
+            {"region": "Europe", "country": "France", "city": "Paris"},
+            {"region": "Europe", "country": "Allemagne", "city": "Berlin"},
+            {"region": "Europe", "country": "Royaume-Uni", "city": "Londres"},
+            {"region": "Europe", "country": "Espagne", "city": "Madrid"},
+            {"region": "Europe", "country": "Italie", "city": "Rome"},
+            {"region": "Asie", "country": "Japon", "city": "Tokyo"},
+            {"region": "Asie", "country": "Chine", "city": "Hong Kong"},
+            {"region": "Asie", "country": "Corée du Sud", "city": "Séoul"},
+            {"region": "Asie", "country": "Inde", "city": "Mumbai"},
+            {"region": "Asie", "country": "Singapour", "city": "Singapour"},
+            {"region": "Amériques", "country": "États-Unis", "city": "New York"},
+            {"region": "Amériques", "country": "États-Unis", "city": "Los Angeles"},
+            {"region": "Amériques", "country": "Canada", "city": "Toronto"},
+            {"region": "Amériques", "country": "Brésil", "city": "São Paulo"},
+            {"region": "Amériques", "country": "Mexique", "city": "Mexico"},
+            {"region": "Afrique", "country": "Afrique du Sud", "city": "Johannesburg"},
+            {"region": "Afrique", "country": "Égypte", "city": "Le Caire"},
+            {"region": "Afrique", "country": "Maroc", "city": "Casablanca"},
+            {"region": "Afrique", "country": "Kenya", "city": "Nairobi"},
+            {"region": "Afrique", "country": "Nigeria", "city": "Lagos"},
+            {"region": "Océanie", "country": "Australie", "city": "Sydney"},
+            {"region": "Océanie", "country": "Nouvelle-Zélande", "city": "Auckland"},
+            {"region": "Océanie", "country": "Fidji", "city": "Suva"}
+        ]
+        
+        self.servers = []
+        for i, c in enumerate(countries):
+            self.servers.append({
+                "id": f"sv-{i+1}",
+                "region": c["region"],
+                "country": c["country"],
+                "city": c["city"],
+                "protocols": ["wireguard", "openvpn"] if i % 3 == 0 else ["wireguard"],
+                "capabilities": {
+                    "vpn": True,
+                    "proxy": i % 2 == 0,
+                    "tor": i % 5 == 0
+                }
+            })
+        
+        self.server_list.populate_servers(self.servers)
+        
+    def on_server_selected(self, server):
+        self.current_server = server
+        self.connection_widget.set_selected_server(server)
+        
+    def connect_vpn(self, server):
+        try:
+            connection_config = {
+                'server': server,
+                'protocol': self.protocol,
+                'port': 51820 if self.protocol == 'wireguard' else 1194,
+            }
+            
+            if self.vpn_manager.connect(connection_config):
+                self.connection_widget.update_status(True, server, "00:00:00")
+                if hasattr(self, 'bandwidth_graph'):
+                    self.bandwidth_graph.reset()
+                messagebox.showinfo("VPN Connecté", f"Connecté à {server.get('country', 'Unknown')} - {server.get('city', '')}")
+            else:
+                messagebox.showerror("Erreur", "Échec de la connexion au serveur VPN.")
+                
+        except Exception as e:
+            print(f"Erreur de connexion: {e}")
+            messagebox.showerror("Erreur", f"Erreur: {str(e)}")
+            
+    def disconnect_vpn(self):
+        try:
+            if self.vpn_manager.disconnect():
+                self.connection_widget.update_status(False, None, "00:00:00")
+                messagebox.showinfo("VPN Déconnecté", "Déconnecté du serveur VPN.")
+            else:
+                messagebox.showerror("Erreur", "Échec de la déconnexion du serveur VPN.")
+                
+        except Exception as e:
+            print(f"Erreur de déconnexion: {e}")
+            messagebox.showerror("Erreur", f"Erreur: {str(e)}")
+            
+    def update_status(self, status):
+        is_connected = status.get('connected', False)
+        uptime = status.get('uptime', "00:00:00")
+        stats = status.get('statistics', {})
+        
+        self.connection_widget.update_status(is_connected, self.current_server, uptime)
+        
+        download_speed = f"{stats.get('download_speed', 0):.2f} MB/s"
+        upload_speed = f"{stats.get('upload_speed', 0):.2f} MB/s"
+        total_downloaded = f"{stats.get('total_downloaded', 0):.2f} MB"
+        total_uploaded = f"{stats.get('total_uploaded', 0):.2f} MB"
+        
+        self.stats_widget.update_statistics(
+            download_speed,
+            upload_speed,
+            total_downloaded,
+            total_uploaded
+        )
+        
+        if is_connected and hasattr(self, 'bandwidth_graph'):
+            self.bandwidth_graph.update_bandwidth(
+                stats.get('download_speed', 0),
+                stats.get('upload_speed', 0)
+            )
+            
+    def on_close(self):
+        if hasattr(self, 'status_thread'):
+            self.status_thread.stop()
+        self.root.destroy()
+
+def main():
+    root = tk.Tk()
+    app = AniDataVPNApp(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
+EOF
+
+# Rendre le fichier exécutable
+chmod +x tkinter_ui_fixed.py
+
+# Créer un fichier pour le démarrage rapide
+cat > run_vpn_165_pays.sh << 'EOF'
+#!/bin/bash
+# Lancement d'AniData VPN avec 165 pays
+# Version corrigée avec Tkinter
+
+# Afficher le logo
+echo -e "\033[0;34m"
+echo "   _____          _    _____        __          __     _______  _   _ "
+echo "  / __

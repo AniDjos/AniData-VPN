@@ -1,0 +1,626 @@
+[
+  {
+    "id": "af-01",
+    "region": "Asia",
+    "country": "Afghanistan",
+    "city": "Kabul",
+    "protocols": ["wireguard", "openvpn"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "al-01",
+    "region": "Europe",
+    "country": "Albania",
+    "city": "Tirana",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "dz-01",
+    "region": "Africa",
+    "country": "Algeria",
+    "city": "Algiers",
+    "protocols": ["wireguard", "openvpn"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "ad-01",
+    "region": "Europe",
+    "country": "Andorra",
+    "city": "Andorra la Vella",
+    "protocols": ["wireguard", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "ao-01",
+    "region": "Africa",
+    "country": "Angola",
+    "city": "Luanda",
+    "protocols": ["wireguard", "openvpn"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "ag-01",
+    "region": "Americas",
+    "country": "Antigua and Barbuda",
+    "city": "Saint John's",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "ar-01",
+    "region": "Americas",
+    "country": "Argentina",
+    "city": "Buenos Aires",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": true
+    }
+  },
+  {
+    "id": "am-01",
+    "region": "Asia",
+    "country": "Armenia",
+    "city": "Yerevan",
+    "protocols": ["wireguard", "openvpn"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "au-01",
+    "region": "Oceania",
+    "country": "Australia",
+    "city": "Sydney",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": true
+    }
+  },
+  {
+    "id": "au-02",
+    "region": "Oceania",
+    "country": "Australia",
+    "city": "Melbourne",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "at-01",
+    "region": "Europe",
+    "country": "Austria",
+    "city": "Vienna",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": true
+    }
+  },
+  {
+    "id": "az-01",
+    "region": "Asia",
+    "country": "Azerbaijan",
+    "city": "Baku",
+    "protocols": ["wireguard", "openvpn"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "bs-01",
+    "region": "Americas",
+    "country": "Bahamas",
+    "city": "Nassau",
+    "protocols": ["wireguard", "openvpn"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "bh-01",
+    "region": "Asia",
+    "country": "Bahrain",
+    "city": "Manama",
+    "protocols": ["wireguard", "openvpn"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "bd-01",
+    "region": "Asia",
+    "country": "Bangladesh",
+    "city": "Dhaka",
+    "protocols": ["wireguard", "openvpn"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "bb-01",
+    "region": "Americas",
+    "country": "Barbados",
+    "city": "Bridgetown",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "by-01",
+    "region": "Europe",
+    "country": "Belarus",
+    "city": "Minsk",
+    "protocols": ["wireguard", "openvpn"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "be-01",
+    "region": "Europe",
+    "country": "Belgium",
+    "city": "Brussels",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": true
+    }
+  },
+  {
+    "id": "bz-01",
+    "region": "Americas",
+    "country": "Belize",
+    "city": "Belmopan",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "bj-01",
+    "region": "Africa",
+    "country": "Benin",
+    "city": "Porto-Novo",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "bt-01",
+    "region": "Asia",
+    "country": "Bhutan",
+    "city": "Thimphu",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "bo-01",
+    "region": "Americas",
+    "country": "Bolivia",
+    "city": "La Paz",
+    "protocols": ["wireguard", "openvpn"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "ba-01",
+    "region": "Europe",
+    "country": "Bosnia and Herzegovina",
+    "city": "Sarajevo",
+    "protocols": ["wireguard", "openvpn"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "bw-01",
+    "region": "Africa",
+    "country": "Botswana",
+    "city": "Gaborone",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "br-01",
+    "region": "Americas",
+    "country": "Brazil",
+    "city": "São Paulo",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": true
+    }
+  },
+  {
+    "id": "br-02",
+    "region": "Americas",
+    "country": "Brazil",
+    "city": "Rio de Janeiro",
+    "protocols": ["wireguard", "openvpn"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "bn-01",
+    "region": "Asia",
+    "country": "Brunei",
+    "city": "Bandar Seri Begawan",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "bg-01",
+    "region": "Europe",
+    "country": "Bulgaria",
+    "city": "Sofia",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "bf-01",
+    "region": "Africa",
+    "country": "Burkina Faso",
+    "city": "Ouagadougou",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "bi-01",
+    "region": "Africa",
+    "country": "Burundi",
+    "city": "Bujumbura",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "kh-01",
+    "region": "Asia",
+    "country": "Cambodia",
+    "city": "Phnom Penh",
+    "protocols": ["wireguard", "openvpn"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "cm-01",
+    "region": "Africa",
+    "country": "Cameroon",
+    "city": "Yaoundé",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "ca-01",
+    "region": "Americas",
+    "country": "Canada",
+    "city": "Toronto",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": true
+    }
+  },
+  {
+    "id": "ca-02",
+    "region": "Americas",
+    "country": "Canada",
+    "city": "Vancouver",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "ca-03",
+    "region": "Americas",
+    "country": "Canada",
+    "city": "Montreal",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "cv-01",
+    "region": "Africa",
+    "country": "Cape Verde",
+    "city": "Praia",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "cf-01",
+    "region": "Africa",
+    "country": "Central African Republic",
+    "city": "Bangui",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "td-01",
+    "region": "Africa",
+    "country": "Chad",
+    "city": "N'Djamena",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "cl-01",
+    "region": "Americas",
+    "country": "Chile",
+    "city": "Santiago",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "cn-01",
+    "region": "Asia",
+    "country": "China",
+    "city": "Hong Kong",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "cn-02",
+    "region": "Asia",
+    "country": "China",
+    "city": "Shanghai",
+    "protocols": ["wireguard", "openvpn"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "co-01",
+    "region": "Americas",
+    "country": "Colombia",
+    "city": "Bogotá",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "km-01",
+    "region": "Africa",
+    "country": "Comoros",
+    "city": "Moroni",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "cg-01",
+    "region": "Africa",
+    "country": "Congo",
+    "city": "Brazzaville",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "cd-01",
+    "region": "Africa",
+    "country": "Democratic Republic of the Congo",
+    "city": "Kinshasa",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "cr-01",
+    "region": "Americas",
+    "country": "Costa Rica",
+    "city": "San José",
+    "protocols": ["wireguard", "openvpn"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "hr-01",
+    "region": "Europe",
+    "country": "Croatia",
+    "city": "Zagreb",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "cu-01",
+    "region": "Americas",
+    "country": "Cuba",
+    "city": "Havana",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  },
+  {
+    "id": "cy-01",
+    "region": "Europe",
+    "country": "Cyprus",
+    "city": "Nicosia",
+    "protocols": ["wireguard", "openvpn"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": false
+    }
+  },
+  {
+    "id": "cz-01",
+    "region": "Europe",
+    "country": "Czech Republic",
+    "city": "Prague",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": true
+    }
+  },
+  {
+    "id": "dk-01",
+    "region": "Europe",
+    "country": "Denmark",
+    "city": "Copenhagen",
+    "protocols": ["wireguard", "openvpn", "ikev2"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": true,
+      "tor": true
+    }
+  },
+  {
+    "id": "dj-01",
+    "region": "Africa",
+    "country": "Djibouti",
+    "city": "Djibouti",
+    "protocols": ["wireguard"],
+    "capabilities": {
+      "vpn": true,
+      "proxy": false,
+      "tor": false
+    }
+  }
+]
