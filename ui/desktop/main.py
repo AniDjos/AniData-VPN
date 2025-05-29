@@ -187,7 +187,7 @@ DEFAULT_SETTINGS = {
     "startup_connect": False,
     "minimize_to_tray": True,
     "default_server": None,
-    "theme": "dark",
+    "theme": "lovable",
     "kill_switch": True,
     "dns_leak_protection": True,
     "ipv6_leak_protection": True,
@@ -358,16 +358,31 @@ class ServerListWidget(QWidget):
 
 
 class ConnectionWidget(QWidget):
-    """Widget for controlling VPN connection"""
+    """Widget for connecting to VPN servers"""
     
-    connect_clicked = pyqtSignal(dict)
+    connect_clicked = pyqtSignal()
     disconnect_clicked = pyqtSignal()
     
     def __init__(self, parent=None):
         super().__init__(parent)
         self.parent = parent
         self.selected_server = None
+        self.connect_icon = ""
+        self.disconnect_icon = ""
         self.initUI()
+        
+    def update_button_icons(self):
+        """Update button icons based on the current theme"""
+        if hasattr(self.parent, 'theme_assets'):
+            # Set connect button icon
+            connect_icon_path = self.parent.theme_assets["connect_icon"]
+            if os.path.exists(connect_icon_path):
+                self.connect_button.setIcon(QIcon(connect_icon_path))
+                
+            # Set disconnect button icon
+            disconnect_icon_path = self.parent.theme_assets["disconnect_icon"]
+            if os.path.exists(disconnect_icon_path):
+                self.disconnect_button.setIcon(QIcon(disconnect_icon_path))
         
     def initUI(self):
         layout = QVBoxLayout(self)
@@ -677,7 +692,7 @@ class SettingsWidget(QWidget):
         ui_layout = QFormLayout()
         
         self.theme_combo = QComboBox()
-        self.theme_combo.addItems(["dark", "light"])
+        self.theme_combo.addItems(["dark", "light", "lovable"])
         theme = self.settings.get("theme", "dark")
         index = self.theme_combo.findText(theme)
         if index >= 0:
@@ -722,7 +737,39 @@ class MainWindow(QMainWindow):
         self.vpn_manager = WireGuardManager()
         self.settings = QSettings("AniData", "VPN")
         self.load_settings()
-        self.initUI()
+        
+        # Theme-specific assets paths
+        self.theme_assets = {
+            "connect_icon": "",
+            "disconnect_icon": "",
+            "settings_icon": "",
+            "tray_icon": "",
+            "logo": ""
+        }
+        self.update_theme_assets(self.app_settings.get("theme", "dark"))
+        
+    def update_theme_assets(self, theme):
+        """Update asset paths based on the selected theme"""
+        base_dir = os.path.dirname(__file__)
+        
+        if theme == "lovable":
+            # Use lovable.ai style assets
+            self.theme_assets = {
+                "connect_icon": os.path.join(base_dir, "..", "assets", "lovable", "connect.png"),
+                "disconnect_icon": os.path.join(base_dir, "..", "assets", "lovable", "disconnect.png"),
+                "settings_icon": os.path.join(base_dir, "..", "assets", "lovable", "settings.png"),
+                "tray_icon": os.path.join(base_dir, "..", "assets", "lovable", "tray_icon.png"),
+                "logo": os.path.join(base_dir, "..", "assets", "lovable", "logo.png")
+            }
+        else:
+            # Use default assets
+            self.theme_assets = {
+                "connect_icon": os.path.join(base_dir, "..", "assets", "connect.png"),
+                "disconnect_icon": os.path.join(base_dir, "..", "assets", "disconnect.png"),
+                "settings_icon": os.path.join(base_dir, "..", "assets", "settings.png"),
+                "tray_icon": os.path.join(base_dir, "..", "assets", "tray_icon.png"),
+                "logo": os.path.join(base_dir, "..", "assets", "logo.png")
+            }
         
         # Start status monitoring thread
         self.status_thread = VPNStatusThread(self.vpn_manager)
@@ -745,7 +792,7 @@ class MainWindow(QMainWindow):
         header_layout = QHBoxLayout()
         
         # Logo
-        logo_path = os.path.join(os.path.dirname(__file__), "..", "assets", "logo.png")
+        logo_path = self.theme_assets["logo"]
         if os.path.exists(logo_path):
             logo_label = QLabel()
             logo_pixmap = QPixmap(logo_path).scaledToHeight(60, Qt.SmoothTransformation)
@@ -762,7 +809,7 @@ class MainWindow(QMainWindow):
         
         # Settings button
         settings_button = QToolButton()
-        settings_button.setIcon(QIcon(os.path.join(os.path.dirname(__file__), "..", "assets", "settings.png")))
+        settings_button.setIcon(QIcon(self.theme_assets["settings_icon"]))
         settings_button.setIconSize(QSize(24, 24))
         settings_button.clicked.connect(self.show_settings)
         header_layout.addWidget(settings_button)
@@ -806,7 +853,7 @@ class MainWindow(QMainWindow):
         
         # System tray icon
         self.tray_icon = QSystemTrayIcon(self)
-        icon_path = os.path.join(os.path.dirname(__file__), "..", "assets", "tray_icon.png")
+        icon_path = self.theme_assets["tray_icon"]
         if os.path.exists(icon_path):
             self.tray_icon.setIcon(QIcon(icon_path))
         else:
@@ -856,7 +903,24 @@ class MainWindow(QMainWindow):
     
     def apply_theme(self):
         """Apply the selected theme to the application"""
-        if self.app_settings.get("theme") == "dark":
+        theme = self.app_settings.get("theme")
+        
+        # Update assets paths based on theme
+        self.update_theme_assets(theme)
+        
+        if theme == "lovable":
+            # Lovable.ai theme
+            css_path = os.path.join(os.path.dirname(__file__), "..", "assets", "lovable_theme.css")
+            if os.path.exists(css_path):
+                with open(css_path, 'r') as file:
+                    self.setStyleSheet(file.read())
+            else:
+                # Fallback if CSS file is missing
+                print("Warning: lovable_theme.css not found, using light theme instead")
+                self.app_settings["theme"] = "light"
+                self.apply_theme()
+                return
+        elif theme == "dark":
             # Dark theme
             self.setStyleSheet("""
                 QMainWindow, QWidget { background-color: #2c3e50; color: #ecf0f1; }
@@ -875,7 +939,7 @@ class MainWindow(QMainWindow):
                 QHeaderView::section { background-color: #34495e; color: #ecf0f1; padding: 5px; }
             """)
         else:
-            # Light theme
+            # Light theme (default)
             self.setStyleSheet("""
                 QMainWindow, QWidget { background-color: #ecf0f1; color: #2c3e50; }
                 QTabWidget::pane { border: 1px solid #bdc3c7; }
@@ -892,6 +956,10 @@ class MainWindow(QMainWindow):
                 QTableWidget { gridline-color: #bdc3c7; }
                 QHeaderView::section { background-color: #bdc3c7; color: #2c3e50; padding: 5px; }
             """)
+        
+        # Update UI elements with new icons
+        if hasattr(self, 'connection_widget'):
+            self.connection_widget.update_button_icons()
     
     def load_server_data(self):
         """Load server data from configuration file"""
@@ -1161,8 +1229,34 @@ class MainWindow(QMainWindow):
         dialog.setWindowTitle("AniData VPN Settings")
         dialog.setMinimumWidth(400)
         
+        # Apply current theme to dialog
+        theme = self.app_settings.get("theme")
+        if theme == "lovable":
+            css_path = os.path.join(os.path.dirname(__file__), "..", "assets", "lovable_theme.css")
+            if os.path.exists(css_path):
+                with open(css_path, 'r') as file:
+                    dialog.setStyleSheet(file.read())
+        
         layout = QVBoxLayout(dialog)
         layout.addWidget(self.settings_widget)
+        
+        # Add header with logo for lovable theme
+        if theme == "lovable":
+            header_layout = QHBoxLayout()
+            logo_path = self.theme_assets["logo"]
+            if os.path.exists(logo_path):
+                logo_label = QLabel()
+                logo_pixmap = QPixmap(logo_path).scaledToHeight(40, Qt.SmoothTransformation)
+                logo_label.setPixmap(logo_pixmap)
+                header_layout.addWidget(logo_label)
+            
+            title_label = QLabel("Settings")
+            title_label.setStyleSheet("font-size: 18px; font-weight: bold; color: #6c5ce7;")
+            header_layout.addWidget(title_label)
+            header_layout.addStretch(1)
+            
+            # Insert header at the top of the layout
+            layout.insertLayout(0, header_layout)
         
         dialog.exec_()
     
