@@ -24,33 +24,43 @@ except ImportError:
 # Répertoire courant
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Classe simulant le gestionnaire WireGuard
-class WireGuardManager:
-    def __init__(self, **kwargs):
-        self.servers = []
-        
-    def connect(self, config):
-        print(f"Connexion à {config.get('server', {}).get('country', 'Unknown')}")
-        return True
-        
-    def disconnect(self):
-        print("Déconnexion...")
-        return True
-        
-    def get_status(self):
-        return {
-            'connected': False,
-            'uptime': "00:00:00",
-            'statistics': {
-                'download_speed': random.uniform(0, 2),
-                'upload_speed': random.uniform(0, 1),
-                'total_downloaded': random.uniform(0, 100),
-                'total_uploaded': random.uniform(0, 50)
+# Importer le vrai gestionnaire VPN
+try:
+    from core.vpn import WireGuardManager, RealVPNManager
+    real_vpn_available = True
+    print("Module VPN réel chargé avec succès")
+except ImportError:
+    real_vpn_available = False
+    print("Module VPN réel non disponible, utilisation du mode simulation")
+    
+    # Classe simulant le gestionnaire WireGuard (utilisée uniquement si le module réel n'est pas disponible)
+    class WireGuardManager:
+        def __init__(self, **kwargs):
+            self.servers = []
+            
+        def connect(self, config):
+            print(f"Connexion à {config.get('server', {}).get('country', 'Unknown')}")
+            return True
+            
+        def disconnect(self):
+            print("Déconnexion...")
+            return True
+            
+        def get_status(self):
+            return {
+                'connected': False,
+                'uptime': "00:00:00",
+                'statistics': {
+                    'download_speed': random.uniform(0, 2),
+                    'upload_speed': random.uniform(0, 1),
+                    'total_downloaded': random.uniform(0, 100),
+                    'total_uploaded': random.uniform(0, 50)
+                }
             }
-        }
 
 # Thread de surveillance du VPN
 class VPNStatusThread(threading.Thread):
+    """Thread for monitoring VPN connection status"""
     def __init__(self, manager, callback):
         super().__init__()
         self.manager = manager
@@ -64,8 +74,8 @@ class VPNStatusThread(threading.Thread):
                 status = self.manager.get_status()
                 self.callback(status)
             except Exception as e:
-                print(f"Erreur: {str(e)}")
-            time.sleep(3)
+                print(f"Erreur de surveillance: {str(e)}")
+            time.sleep(1)  # Mise à jour plus fréquente pour une meilleure réactivité
     
     def stop(self):
         self.running = False
@@ -412,8 +422,22 @@ class AniDataVPNApp:
         self.root.geometry("1000x600")
         self.root.minsize(800, 500)
         
-        # Gestionnaire VPN
-        self.vpn_manager = WireGuardManager()
+        # Initialiser le gestionnaire VPN (réel ou simulé)
+        if real_vpn_available:
+            try:
+                # Utiliser le vrai gestionnaire VPN qui chiffre le trafic Internet
+                home_dir = os.path.expanduser("~/.anidata")
+                config_dir = os.path.join(home_dir, "config/wireguard")
+                servers_file = os.path.join(home_dir, "servers/config.json")
+                self.vpn_manager = RealVPNManager(config_dir=config_dir, servers_file=servers_file)
+                print("Gestionnaire VPN réel initialisé")
+            except Exception as e:
+                print(f"Erreur lors de l'initialisation du VPN réel: {e}")
+                self.vpn_manager = WireGuardManager()
+        else:
+            # Utiliser le gestionnaire simulé
+            self.vpn_manager = WireGuardManager()
+            
         self.current_server = None
         self.servers = []
         self.protocol = "wireguard"
@@ -530,16 +554,47 @@ class AniDataVPNApp:
         
     def connect_vpn(self, server):
         try:
+            # Vérifier les permissions pour le VPN réel
+            if real_vpn_available and not self.check_vpn_prerequisites():
+                return
+                
+            # Configurer la connexion
             connection_config = {
                 'server': server,
                 'protocol': self.protocol,
-                'port': 51820 if self.protocol == 'wireguard' else 1194,
+                'port': server.get('port', 51820) if self.protocol == 'wireguard' else 1194,
             }
             
-            if self.vpn_manager.connect(connection_config):
+            # Afficher un message de connexion
+            progress_window = tk.Toplevel(self.root)
+            progress_window.title("Connexion en cours")
+            progress_window.geometry("300x100")
+            progress_window.transient(self.root)
+            progress_window.grab_set()
+            
+            message = ttk.Label(progress_window, text=f"Connexion à {server.get('country')}...\nVeuillez patienter...")
+            message.pack(pady=20)
+            progress_window.update()
+            
+            # Tenter la connexion
+            result = self.vpn_manager.connect(connection_config)
+            
+            # Fermer la fenêtre de progression
+            progress_window.destroy()
+            
+            if result:
                 self.connection_widget.update_status(True, server, "00:00:00")
                 self.bandwidth_graph.reset()
-                messagebox.showinfo("VPN Connecté", f"Connecté à {server.get('country', 'Unknown')} - {server.get('city', '')}")
+                
+                # Vérifier l'IP après connexion
+                if real_vpn_available and hasattr(self.vpn_manager, 'check_ip'):
+                    ip = self.vpn_manager.check_ip()
+                    messagebox.showinfo("VPN Connecté", 
+                                       f"Connecté à {server.get('country', 'Unknown')} - {server.get('city', '')}\n"
+                                       f"Votre adresse IP est maintenant: {ip}")
+                else:
+                    messagebox.showinfo("VPN Connecté", 
+                                       f"Connecté à {server.get('country', 'Unknown')} - {server.get('city', '')}")
             else:
                 messagebox.showerror("Erreur", "Échec de la connexion au serveur VPN.")
                 
@@ -549,9 +604,32 @@ class AniDataVPNApp:
             
     def disconnect_vpn(self):
         try:
-            if self.vpn_manager.disconnect():
+            # Afficher un message de déconnexion
+            progress_window = tk.Toplevel(self.root)
+            progress_window.title("Déconnexion en cours")
+            progress_window.geometry("300x100")
+            progress_window.transient(self.root)
+            progress_window.grab_set()
+            
+            message = ttk.Label(progress_window, text="Déconnexion du VPN...\nVeuillez patienter...")
+            message.pack(pady=20)
+            progress_window.update()
+            
+            # Tenter la déconnexion
+            result = self.vpn_manager.disconnect()
+            
+            # Fermer la fenêtre de progression
+            progress_window.destroy()
+            
+            if result:
                 self.connection_widget.update_status(False, None, "00:00:00")
                 messagebox.showinfo("VPN Déconnecté", "Déconnecté du serveur VPN.")
+                
+                # Vérifier l'IP après déconnexion
+                if real_vpn_available and hasattr(self.vpn_manager, 'check_ip'):
+                    ip = self.vpn_manager.check_ip()
+                    if ip:
+                        messagebox.showinfo("Information", f"Votre adresse IP est revenue à: {ip}")
             else:
                 messagebox.showerror("Erreur", "Échec de la déconnexion du serveur VPN.")
                 
@@ -590,9 +668,37 @@ class AniDataVPNApp:
         self.root.destroy()
 
 # Lancer l'application
+    def check_vpn_prerequisites(self):
+        """Vérifie si les prérequis pour le VPN réel sont satisfaits"""
+        # Vérifier si WireGuard est installé
+        if hasattr(self.vpn_manager, 'is_wireguard_installed') and not self.vpn_manager.is_wireguard_installed():
+            response = messagebox.askyesno("WireGuard non installé", 
+                                         "WireGuard n'est pas installé sur votre système. "
+                                         "Voulez-vous l'installer maintenant?\n\n"
+                                         "Note: Cela nécessitera des privilèges administrateur.")
+            if response:
+                if not self.vpn_manager.install_wireguard():
+                    messagebox.showerror("Erreur", "Impossible d'installer WireGuard. "
+                                                "Veuillez l'installer manuellement.")
+                    return False
+            else:
+                return False
+        
+        # Vérifier les privilèges
+        if hasattr(self.vpn_manager, 'check_permissions') and not self.vpn_manager.check_permissions():
+            response = messagebox.askyesno("Privilèges administrateur requis", 
+                                         "L'établissement d'une connexion VPN nécessite des privilèges "
+                                         "administrateur. Voulez-vous continuer?\n\n"
+                                         "Vous devrez entrer votre mot de passe.")
+            if not response:
+                return False
+        
+        return True
+
 def main():
     root = tk.Tk()
     app = AniDataVPNApp(root)
+    root.protocol("WM_DELETE_WINDOW", app.on_close)
     root.mainloop()
 
 if __name__ == "__main__":
